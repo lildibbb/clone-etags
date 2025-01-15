@@ -189,13 +189,22 @@ export function AppSidebar({ userType, ...props }: AppSidebarProps) {
 	return (
 		<Sidebar collapsible="icon" {...props}>
 			<SidebarHeader>
-				<div className="flex items-center">
-					<div className="flex-shrink-0 w-12 flex justify-center">
-						<img src={JataNegara} alt="Jata Negara" className="w-8 h-8" />
+				<div className="flex items-center gap-3 px-2 group-data-[collapsible=icon]:justify-center">
+					<div className="flex-shrink-0 w-12 h-12 flex items-center justify-center group-data-[collapsible=icon]:w-8 group-data-[collapsible=icon]:h-8">
+						<img
+							src={JataNegara}
+							alt="Jata Negara"
+							className="w-10 h-10 group-data-[collapsible=icon]:w-6 group-data-[collapsible=icon]:h-6"
+						/>
 					</div>
-					<div className="ml-2">
-						<div className="font-bold">e-TAGS</div>
-						<div className="text-sm">KPWKM</div>
+					<div className="flex flex-col min-w-0 group-data-[collapsible=icon]:hidden">
+						<div className="text-lg font-bold">e-TAGS</div>
+						<div className="text-xs text-muted-foreground leading-tight">
+							Kementerian Pembangunan Wanita,
+						</div>
+						<div className="text-xs text-muted-foreground leading-tight">
+							Keluarga dan Masyarakat (KPWKM)
+						</div>
 					</div>
 				</div>
 			</SidebarHeader>
