@@ -1,4 +1,6 @@
-import { createLazyFileRoute } from "@tanstack/react-router";
+import { AppSidebar } from "@/components/app-sidebar";
+import { SidebarProvider } from "@/components/ui/sidebar";
+import { createLazyFileRoute, Outlet } from "@tanstack/react-router";
 
 export const Route = createLazyFileRoute("/")({
   component: Index,
@@ -6,8 +8,15 @@ export const Route = createLazyFileRoute("/")({
 
 function Index() {
   return (
-    <div className="p-2">
-      <h3>Welcome Home!</h3>
+    <div className="flex min-h-screen">
+      {/* Sidebar */}
+      <SidebarProvider>
+        <AppSidebar />
+      </SidebarProvider>
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col overflow-hidden">
+        <Outlet />
+      </div>
     </div>
   );
 }
