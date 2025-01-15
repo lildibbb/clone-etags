@@ -14,10 +14,19 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as LoginImport } from './routes/login'
+import { Route as DashboardDashboardImport } from './routes/dashboard/dashboard'
+import { Route as DashboardRespondenRespondenImport } from './routes/dashboard/responden/_responden'
+import { Route as DashboardPengaduPengaduImport } from './routes/dashboard/pengadu/_pengadu'
+import { Route as DashboardPegawaiPegawaiImport } from './routes/dashboard/pegawai/_pegawai'
+import { Route as DashboardAdminAdminImport } from './routes/dashboard/admin/_admin'
 
 // Create Virtual Routes
 
 const IndexLazyImport = createFileRoute('/')()
+const DashboardRespondenImport = createFileRoute('/dashboard/responden')()
+const DashboardPengaduImport = createFileRoute('/dashboard/pengadu')()
+const DashboardPegawaiImport = createFileRoute('/dashboard/pegawai')()
+const DashboardAdminImport = createFileRoute('/dashboard/admin')()
 
 // Create/Update Routes
 
@@ -32,6 +41,57 @@ const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/index.lazy').then((d) => d.Route))
+
+const DashboardRespondenRoute = DashboardRespondenImport.update({
+  id: '/dashboard/responden',
+  path: '/dashboard/responden',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const DashboardPengaduRoute = DashboardPengaduImport.update({
+  id: '/dashboard/pengadu',
+  path: '/dashboard/pengadu',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const DashboardPegawaiRoute = DashboardPegawaiImport.update({
+  id: '/dashboard/pegawai',
+  path: '/dashboard/pegawai',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const DashboardAdminRoute = DashboardAdminImport.update({
+  id: '/dashboard/admin',
+  path: '/dashboard/admin',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const DashboardDashboardRoute = DashboardDashboardImport.update({
+  id: '/dashboard/dashboard',
+  path: '/dashboard/dashboard',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const DashboardRespondenRespondenRoute =
+  DashboardRespondenRespondenImport.update({
+    id: '/_responden',
+    getParentRoute: () => DashboardRespondenRoute,
+  } as any)
+
+const DashboardPengaduPengaduRoute = DashboardPengaduPengaduImport.update({
+  id: '/_pengadu',
+  getParentRoute: () => DashboardPengaduRoute,
+} as any)
+
+const DashboardPegawaiPegawaiRoute = DashboardPegawaiPegawaiImport.update({
+  id: '/_pegawai',
+  getParentRoute: () => DashboardPegawaiRoute,
+} as any)
+
+const DashboardAdminAdminRoute = DashboardAdminAdminImport.update({
+  id: '/_admin',
+  getParentRoute: () => DashboardAdminRoute,
+} as any)
 
 // Populate the FileRoutesByPath interface
 
@@ -51,44 +111,207 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginImport
       parentRoute: typeof rootRoute
     }
+    '/dashboard/dashboard': {
+      id: '/dashboard/dashboard'
+      path: '/dashboard/dashboard'
+      fullPath: '/dashboard/dashboard'
+      preLoaderRoute: typeof DashboardDashboardImport
+      parentRoute: typeof rootRoute
+    }
+    '/dashboard/admin': {
+      id: '/dashboard/admin'
+      path: '/dashboard/admin'
+      fullPath: '/dashboard/admin'
+      preLoaderRoute: typeof DashboardAdminImport
+      parentRoute: typeof rootRoute
+    }
+    '/dashboard/admin/_admin': {
+      id: '/dashboard/admin/_admin'
+      path: '/dashboard/admin'
+      fullPath: '/dashboard/admin'
+      preLoaderRoute: typeof DashboardAdminAdminImport
+      parentRoute: typeof DashboardAdminRoute
+    }
+    '/dashboard/pegawai': {
+      id: '/dashboard/pegawai'
+      path: '/dashboard/pegawai'
+      fullPath: '/dashboard/pegawai'
+      preLoaderRoute: typeof DashboardPegawaiImport
+      parentRoute: typeof rootRoute
+    }
+    '/dashboard/pegawai/_pegawai': {
+      id: '/dashboard/pegawai/_pegawai'
+      path: '/dashboard/pegawai'
+      fullPath: '/dashboard/pegawai'
+      preLoaderRoute: typeof DashboardPegawaiPegawaiImport
+      parentRoute: typeof DashboardPegawaiRoute
+    }
+    '/dashboard/pengadu': {
+      id: '/dashboard/pengadu'
+      path: '/dashboard/pengadu'
+      fullPath: '/dashboard/pengadu'
+      preLoaderRoute: typeof DashboardPengaduImport
+      parentRoute: typeof rootRoute
+    }
+    '/dashboard/pengadu/_pengadu': {
+      id: '/dashboard/pengadu/_pengadu'
+      path: '/dashboard/pengadu'
+      fullPath: '/dashboard/pengadu'
+      preLoaderRoute: typeof DashboardPengaduPengaduImport
+      parentRoute: typeof DashboardPengaduRoute
+    }
+    '/dashboard/responden': {
+      id: '/dashboard/responden'
+      path: '/dashboard/responden'
+      fullPath: '/dashboard/responden'
+      preLoaderRoute: typeof DashboardRespondenImport
+      parentRoute: typeof rootRoute
+    }
+    '/dashboard/responden/_responden': {
+      id: '/dashboard/responden/_responden'
+      path: '/dashboard/responden'
+      fullPath: '/dashboard/responden'
+      preLoaderRoute: typeof DashboardRespondenRespondenImport
+      parentRoute: typeof DashboardRespondenRoute
+    }
   }
 }
 
 // Create and export the route tree
 
+interface DashboardAdminRouteChildren {
+  DashboardAdminAdminRoute: typeof DashboardAdminAdminRoute
+}
+
+const DashboardAdminRouteChildren: DashboardAdminRouteChildren = {
+  DashboardAdminAdminRoute: DashboardAdminAdminRoute,
+}
+
+const DashboardAdminRouteWithChildren = DashboardAdminRoute._addFileChildren(
+  DashboardAdminRouteChildren,
+)
+
+interface DashboardPegawaiRouteChildren {
+  DashboardPegawaiPegawaiRoute: typeof DashboardPegawaiPegawaiRoute
+}
+
+const DashboardPegawaiRouteChildren: DashboardPegawaiRouteChildren = {
+  DashboardPegawaiPegawaiRoute: DashboardPegawaiPegawaiRoute,
+}
+
+const DashboardPegawaiRouteWithChildren =
+  DashboardPegawaiRoute._addFileChildren(DashboardPegawaiRouteChildren)
+
+interface DashboardPengaduRouteChildren {
+  DashboardPengaduPengaduRoute: typeof DashboardPengaduPengaduRoute
+}
+
+const DashboardPengaduRouteChildren: DashboardPengaduRouteChildren = {
+  DashboardPengaduPengaduRoute: DashboardPengaduPengaduRoute,
+}
+
+const DashboardPengaduRouteWithChildren =
+  DashboardPengaduRoute._addFileChildren(DashboardPengaduRouteChildren)
+
+interface DashboardRespondenRouteChildren {
+  DashboardRespondenRespondenRoute: typeof DashboardRespondenRespondenRoute
+}
+
+const DashboardRespondenRouteChildren: DashboardRespondenRouteChildren = {
+  DashboardRespondenRespondenRoute: DashboardRespondenRespondenRoute,
+}
+
+const DashboardRespondenRouteWithChildren =
+  DashboardRespondenRoute._addFileChildren(DashboardRespondenRouteChildren)
+
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
   '/login': typeof LoginRoute
+  '/dashboard/dashboard': typeof DashboardDashboardRoute
+  '/dashboard/admin': typeof DashboardAdminAdminRoute
+  '/dashboard/pegawai': typeof DashboardPegawaiPegawaiRoute
+  '/dashboard/pengadu': typeof DashboardPengaduPengaduRoute
+  '/dashboard/responden': typeof DashboardRespondenRespondenRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
   '/login': typeof LoginRoute
+  '/dashboard/dashboard': typeof DashboardDashboardRoute
+  '/dashboard/admin': typeof DashboardAdminAdminRoute
+  '/dashboard/pegawai': typeof DashboardPegawaiPegawaiRoute
+  '/dashboard/pengadu': typeof DashboardPengaduPengaduRoute
+  '/dashboard/responden': typeof DashboardRespondenRespondenRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexLazyRoute
   '/login': typeof LoginRoute
+  '/dashboard/dashboard': typeof DashboardDashboardRoute
+  '/dashboard/admin': typeof DashboardAdminRouteWithChildren
+  '/dashboard/admin/_admin': typeof DashboardAdminAdminRoute
+  '/dashboard/pegawai': typeof DashboardPegawaiRouteWithChildren
+  '/dashboard/pegawai/_pegawai': typeof DashboardPegawaiPegawaiRoute
+  '/dashboard/pengadu': typeof DashboardPengaduRouteWithChildren
+  '/dashboard/pengadu/_pengadu': typeof DashboardPengaduPengaduRoute
+  '/dashboard/responden': typeof DashboardRespondenRouteWithChildren
+  '/dashboard/responden/_responden': typeof DashboardRespondenRespondenRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/login'
+  fullPaths:
+    | '/'
+    | '/login'
+    | '/dashboard/dashboard'
+    | '/dashboard/admin'
+    | '/dashboard/pegawai'
+    | '/dashboard/pengadu'
+    | '/dashboard/responden'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login'
-  id: '__root__' | '/' | '/login'
+  to:
+    | '/'
+    | '/login'
+    | '/dashboard/dashboard'
+    | '/dashboard/admin'
+    | '/dashboard/pegawai'
+    | '/dashboard/pengadu'
+    | '/dashboard/responden'
+  id:
+    | '__root__'
+    | '/'
+    | '/login'
+    | '/dashboard/dashboard'
+    | '/dashboard/admin'
+    | '/dashboard/admin/_admin'
+    | '/dashboard/pegawai'
+    | '/dashboard/pegawai/_pegawai'
+    | '/dashboard/pengadu'
+    | '/dashboard/pengadu/_pengadu'
+    | '/dashboard/responden'
+    | '/dashboard/responden/_responden'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
   LoginRoute: typeof LoginRoute
+  DashboardDashboardRoute: typeof DashboardDashboardRoute
+  DashboardAdminRoute: typeof DashboardAdminRouteWithChildren
+  DashboardPegawaiRoute: typeof DashboardPegawaiRouteWithChildren
+  DashboardPengaduRoute: typeof DashboardPengaduRouteWithChildren
+  DashboardRespondenRoute: typeof DashboardRespondenRouteWithChildren
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
   LoginRoute: LoginRoute,
+  DashboardDashboardRoute: DashboardDashboardRoute,
+  DashboardAdminRoute: DashboardAdminRouteWithChildren,
+  DashboardPegawaiRoute: DashboardPegawaiRouteWithChildren,
+  DashboardPengaduRoute: DashboardPengaduRouteWithChildren,
+  DashboardRespondenRoute: DashboardRespondenRouteWithChildren,
 }
 
 export const routeTree = rootRoute
@@ -102,7 +325,12 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/login"
+        "/login",
+        "/dashboard/dashboard",
+        "/dashboard/admin",
+        "/dashboard/pegawai",
+        "/dashboard/pengadu",
+        "/dashboard/responden"
       ]
     },
     "/": {
@@ -110,6 +338,49 @@ export const routeTree = rootRoute
     },
     "/login": {
       "filePath": "login.tsx"
+    },
+    "/dashboard/dashboard": {
+      "filePath": "dashboard/dashboard.tsx"
+    },
+    "/dashboard/admin": {
+      "filePath": "dashboard/admin",
+      "children": [
+        "/dashboard/admin/_admin"
+      ]
+    },
+    "/dashboard/admin/_admin": {
+      "filePath": "dashboard/admin/_admin.tsx",
+      "parent": "/dashboard/admin"
+    },
+    "/dashboard/pegawai": {
+      "filePath": "dashboard/pegawai",
+      "children": [
+        "/dashboard/pegawai/_pegawai"
+      ]
+    },
+    "/dashboard/pegawai/_pegawai": {
+      "filePath": "dashboard/pegawai/_pegawai.tsx",
+      "parent": "/dashboard/pegawai"
+    },
+    "/dashboard/pengadu": {
+      "filePath": "dashboard/pengadu",
+      "children": [
+        "/dashboard/pengadu/_pengadu"
+      ]
+    },
+    "/dashboard/pengadu/_pengadu": {
+      "filePath": "dashboard/pengadu/_pengadu.tsx",
+      "parent": "/dashboard/pengadu"
+    },
+    "/dashboard/responden": {
+      "filePath": "dashboard/responden",
+      "children": [
+        "/dashboard/responden/_responden"
+      ]
+    },
+    "/dashboard/responden/_responden": {
+      "filePath": "dashboard/responden/_responden.tsx",
+      "parent": "/dashboard/responden"
     }
   }
 }

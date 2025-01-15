@@ -7,16 +7,16 @@ export const Route = createLazyFileRoute("/")({
 });
 
 function Index() {
+  window.location.href = "/login";
   return (
     <div className="flex min-h-screen">
-      {/* Sidebar */}
-      <SidebarProvider>
+      {/* <SidebarProvider>
         <AppSidebar />
       </SidebarProvider>
-      {/* Main Content */}
+
       <div className="flex-1 flex flex-col overflow-hidden">
         <Outlet />
-      </div>
+      </div> */}
     </div>
   );
 }

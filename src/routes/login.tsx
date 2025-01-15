@@ -1,95 +1,196 @@
+import { useState } from "react";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { AlertCircle } from "lucide-react";
 import logo from "../assets/jata_negara.png";
 import background from "../assets/anti.jpg";
+
+// Route definition
 export const Route = createFileRoute("/login")({
   component: RouteComponent,
 });
 
+// Mock Users with explicit index signature
+export const mockUsers: {
+  [key: number]: { email: string; password: string; role: string };
+} = {
+  1: { email: "admin@example.com", password: "admin123", role: "admin" },
+  2: { email: "pegawai@example.com", password: "manager123", role: "pegawai" },
+  3: {
+    email: "responden@example.com",
+    password: "staff123",
+    role: "responden",
+  },
+  4: { email: "pengadu@example.com", password: "user123", role: "pengadu" },
+};
+
 function RouteComponent() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [selectedUser, setSelectedUser] = useState<number | string>("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
+  const handleUserSelection = (value: string) => {
+    const userId = Number(value);
+    setSelectedUser(userId);
+
+    if (mockUsers[userId]) {
+      setEmail(mockUsers[userId].email);
+      setPassword(mockUsers[userId].password);
+      setError(""); // Clear any existing errors
+    } else {
+      setEmail("");
+      setPassword("");
+    }
+  };
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const user = Object.values(mockUsers).find(
+      (u) => u.email === email && u.password === password
+    );
+
+    if (user) {
+      switch (user.role) {
+        case "admin":
+          navigate({ to: "/dashboard/admin" });
+          break;
+        case "pegawai":
+          navigate({ to: "/dashboard/pegawai" });
+          break;
+        case "responden":
+          navigate({ to: "/dashboard/admin" });
+          break;
+        case "pengadu":
+          navigate({ to: "/dashboard/admin" });
+          break;
+        default:
+          setError("Invalid role");
+      }
+    } else {
+      setError("Invalid email or password");
+    }
+  };
+
   return (
     <div
-      className="min-h-screen flex flex-col items-center justify-center p-4"
+      className="min-h-screen flex flex-col items-center justify-center p-4 relative"
       style={{
-        // backgroundColor: "#f3f4f6",
         backgroundImage: `url(${background})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
-      <div className="w-full max-w-[400px] space-y-6">
-        <div className="flex flex-col items-center space-y-2">
-          <img
-            src={logo}
-            alt="Malaysian Coat of Arms"
-            width={120}
-            height={120}
-            className="mb-2"
-          />
-          <h1 className="text-2xl font-semibold text-center">SISTEM e-TAGS</h1>
-          {/* <Button
-            variant="secondary"
-            className="bg-indigo-900 text-white hover:bg-indigo-800"
-          >
-            View Proposal
-          </Button> */}
+      {/* Overlay to improve text readability */}
+      <div className="absolute inset-0 bg-black/20 backdrop-blur-[2px]" />
+
+      <div className="w-full max-w-[400px] space-y-6 relative z-10">
+        <div className="flex flex-col items-center space-y-4">
+          <div className="w-28 h-28 rounded-full bg-white/90 p-4 shadow-lg">
+            <img
+              src={logo || "/placeholder.svg"}
+              alt="Malaysian Coat of Arms"
+              className="w-full h-full object-contain"
+            />
+          </div>
+          <h1 className="text-4xl font-bold text-center text-white drop-shadow-md">
+            SISTEM e-TAGS
+          </h1>
         </div>
 
-        <Card className="w-full">
-          <CardHeader className="space-y-1 text-center">
-            <p className="text-sm text-muted-foreground">
-              Please sign-in to your account
-            </p>
-            <p className="text-sm text-muted-foreground">
-              Please Login using existing registered account
-            </p>
-            <Link to="/" className="text-sm text-primary hover:underline">
-              See Demo User
-            </Link>
+        <Card className="border-0 shadow-xl">
+          <CardHeader className="space-y-1">
+            <CardTitle className="text-2xl text-center">Welcome back</CardTitle>
+            <CardDescription className="text-center">
+              Please sign in to your account
+            </CardDescription>
           </CardHeader>
           <CardContent>
-            <form className="space-y-4">
+            <div className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  placeholder="living@yopmail.com"
-                  type="email"
-                  required
-                />
+                <Label htmlFor="user">Demo User</Label>
+                <Select
+                  value={String(selectedUser)}
+                  onValueChange={handleUserSelection}
+                >
+                  <SelectTrigger id="user" className="w-full">
+                    <SelectValue placeholder="Select Demo User" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {Object.keys(mockUsers).map((key) => (
+                      <SelectItem key={key} value={key}>
+                        {mockUsers[Number(key)].role.charAt(0).toUpperCase() +
+                          mockUsers[Number(key)].role.slice(1)}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
-              <div className="space-y-2">
-                <div className="flex justify-between">
-                  <Label htmlFor="password">Kata Laluan</Label>
-                  <Link to="/" className="text-sm text-primary hover:underline">
-                    Lupa Kata Laluan?
-                  </Link>
+
+              <form onSubmit={handleLogin} className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="email">Email</Label>
+                  <Input
+                    id="email"
+                    placeholder="name@example.com"
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    className="border-input"
+                  />
                 </div>
-                <Input id="password" type="password" required />
-              </div>
-              <div className="flex items-center space-x-2">
-                {/* <Checkbox id="remember" /> */}
-                <Label htmlFor="remember" className="text-sm font-normal">
-                  Remember Me
-                </Label>
-              </div>
-              <Button className="w-full bg-indigo-600 hover:bg-indigo-700">
-                Log Masuk
-              </Button>
-              <div className="text-center space-y-2">
-                <div className="text-sm text-muted-foreground">or</div>
-                <div className="text-sm">
-                  Tiada Akaun?{" "}
-                  <Link to="/" className="text-primary hover:underline">
-                    Daftar Akaun
-                  </Link>
+                <div className="space-y-2">
+                  <Label htmlFor="password">Password</Label>
+                  <Input
+                    id="password"
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    className="border-input"
+                  />
                 </div>
-              </div>
-            </form>
+
+                {error && (
+                  <Alert variant="destructive">
+                    <AlertCircle className="h-4 w-4" />
+                    <AlertDescription>{error}</AlertDescription>
+                  </Alert>
+                )}
+
+                <Button type="submit" className="w-full" size="lg">
+                  Log Masuk
+                </Button>
+              </form>
+            </div>
           </CardContent>
+          <CardFooter className="flex flex-col space-y-2">
+            <p className="px-8 text-center text-sm text-muted-foreground">
+              This is a demo login page. Select a user type above to
+              automatically fill in credentials.
+            </p>
+          </CardFooter>
         </Card>
       </div>
     </div>
