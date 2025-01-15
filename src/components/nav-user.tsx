@@ -30,12 +30,7 @@ export function NavUser({
 	};
 }) {
 	const { isMobile } = useSidebar();
-
 	const navigate = useNavigate();
-
-	const handleLogout = () => {
-		navigate({ to: "/login" });
-	};
 
 	return (
 		<SidebarMenu>
@@ -88,7 +83,7 @@ export function NavUser({
 							</DropdownMenuItem>
 						</DropdownMenuGroup>
 						<DropdownMenuSeparator />
-						<DropdownMenuItem onClick={handleLogout}>
+						<DropdownMenuItem onClick={() => navigate({ to: "/login" })}>
 							<LogOut />
 							Log out
 						</DropdownMenuItem>

@@ -10,7 +10,7 @@ import {
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { ArrowRight, Clock, MapPin } from "lucide-react";
 
 export const Route = createFileRoute("/dashboard/pegawai/_pegawai/home")({
@@ -56,6 +56,7 @@ const recentCases = [
 ];
 
 function OfficerDashboard() {
+	const navigate = useNavigate();
 	return (
 		<div className="flex flex-col min-h-screen bg-gray-100">
 			<header className="bg-white shadow-sm">
@@ -134,7 +135,13 @@ function OfficerDashboard() {
 								</TableBody>
 							</Table>
 							<div className="p-4 border-t mt-4">
-								<Button variant="outline" className="w-full sm:w-auto">
+								<Button
+									variant="outline"
+									className="w-full sm:w-auto"
+									onClick={() => {
+										navigate({ to: "/dashboard/pegawai/senarai-aduan" });
+									}}
+								>
 									Lihat semua kes
 									<ArrowRight className="ml-2 w-4 h-4" />
 								</Button>
