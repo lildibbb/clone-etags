@@ -52,11 +52,11 @@ const navItems = {
 			items: [
 				{
 					title: "Borang 3",
-					url: "/pegawai/aduan-baru/borang3",
+					url: "/dashboard/pegawai/aduan-baru/borang3",
 				},
 				{
 					title: "Borang 4",
-					url: "/pegawai/aduan-baru/borang4",
+					url: "/dashboard/pegawai/aduan-baru/borang4",
 				},
 			],
 		},
@@ -68,7 +68,7 @@ const navItems = {
 			items: [
 				{
 					title: "Senarai Aduan",
-					url: "/pegawai/senarai-aduan",
+					url: "/dashboard/pegawai/senarai-aduan",
 				},
 			],
 		},
