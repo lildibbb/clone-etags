@@ -1,3 +1,11 @@
+import {
+	Breadcrumb,
+	BreadcrumbItem,
+	BreadcrumbLink,
+	BreadcrumbList,
+	BreadcrumbPage,
+	BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import {
 	Card,
@@ -9,6 +17,8 @@ import {
 import { DateTimePicker } from "@/components/ui/date-time-picker";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Separator } from "@/components/ui/separator";
+import { SidebarInset, SidebarTrigger } from "@/components/ui/sidebar";
 import { Textarea } from "@/components/ui/textarea";
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
@@ -53,81 +63,102 @@ function RouteComponent() {
 	};
 
 	return (
-		<div className="min-h-screen bg-gray-50/90">
-			<div className="container mx-auto py-6 max-w-2xl">
-				<Card>
-					<CardHeader className="space-y-1">
-						<CardTitle className="text-2xl">
-							BORANG 3: NOTIS PENDENGARAN
-						</CardTitle>
-						<CardDescription>
-							Sila isi maklumat notis pendengaran dengan lengkap
-						</CardDescription>
-					</CardHeader>
-					<CardContent>
-						<form onSubmit={handleSubmit} className="space-y-6">
-							<div className="space-y-2">
-								<Label htmlFor="noAduan">No Aduan</Label>
-								<Input
-									id="noAduan"
-									name="noAduan"
-									value={generateAduanNumber()}
-									readOnly
-									className="bg-muted"
-								/>
-							</div>
-
-							<div className="space-y-2">
-								<Label htmlFor="namaPengadu">Nama Pengadu</Label>
-								<Input
-									id="namaPengadu"
-									name="namaPengadu"
-									placeholder="Masukkan nama pengadu"
-									value={formData.namaPengadu}
-									onChange={handleInputChange}
-									required
-								/>
-							</div>
-
-							<div className="space-y-2">
-								<Label htmlFor="namaResponden">Nama Responden</Label>
-								<Input
-									id="namaResponden"
-									name="namaResponden"
-									placeholder="Masukkan nama responden"
-									value={formData.namaResponden}
-									onChange={handleInputChange}
-									required
-								/>
-							</div>
-
-							<div className="space-y-2">
-								<Label>Tarikh & Masa</Label>
-								<div>
-									<DateTimePicker />
+		<SidebarInset>
+			<header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
+				<div className="flex items-center gap-2 px-4">
+					<SidebarTrigger className="-ml-1" />
+					<Separator orientation="vertical" className="mr-2 h-4" />
+					<Breadcrumb>
+						<BreadcrumbList>
+							<BreadcrumbItem className="hidden md:block">
+								<BreadcrumbLink href="/dashboard/pegawai/home">
+									Dashboard
+								</BreadcrumbLink>
+							</BreadcrumbItem>
+							<BreadcrumbSeparator className="hidden md:block" />
+							<BreadcrumbItem>
+								<BreadcrumbPage>Lapor Aduan Baru - Borang 3</BreadcrumbPage>
+							</BreadcrumbItem>
+						</BreadcrumbList>
+					</Breadcrumb>
+				</div>
+			</header>
+			<div className="flex-1">
+				<div className="container mx-auto max-w-2xl">
+					<Card>
+						<CardHeader className="space-y-1">
+							<CardTitle className="text-2xl">
+								BORANG 3: NOTIS PENDENGARAN
+							</CardTitle>
+							<CardDescription>
+								Sila isi maklumat notis pendengaran dengan lengkap
+							</CardDescription>
+						</CardHeader>
+						<CardContent>
+							<form onSubmit={handleSubmit} className="space-y-6">
+								<div className="space-y-2">
+									<Label htmlFor="noAduan">No Aduan</Label>
+									<Input
+										id="noAduan"
+										name="noAduan"
+										value={generateAduanNumber()}
+										readOnly
+										className="bg-muted"
+									/>
 								</div>
-							</div>
 
-							<div className="space-y-2">
-								<Label htmlFor="tempat">Tempat</Label>
-								<Textarea
-									id="tempat"
-									name="tempat"
-									placeholder="Masukkan lokasi pendengaran"
-									value={formData.tempat}
-									onChange={handleInputChange}
-									className="min-h-[100px]"
-									required
-								/>
-							</div>
+								<div className="space-y-2">
+									<Label htmlFor="namaPengadu">Nama Pengadu</Label>
+									<Input
+										id="namaPengadu"
+										name="namaPengadu"
+										placeholder="Masukkan nama pengadu"
+										value={formData.namaPengadu}
+										onChange={handleInputChange}
+										required
+									/>
+								</div>
 
-							<Button type="submit" className="w-full">
-								Hantar
-							</Button>
-						</form>
-					</CardContent>
-				</Card>
+								<div className="space-y-2">
+									<Label htmlFor="namaResponden">Nama Responden</Label>
+									<Input
+										id="namaResponden"
+										name="namaResponden"
+										placeholder="Masukkan nama responden"
+										value={formData.namaResponden}
+										onChange={handleInputChange}
+										required
+									/>
+								</div>
+
+								<div className="space-y-2">
+									<Label>Tarikh & Masa</Label>
+									<div>
+										<DateTimePicker />
+									</div>
+								</div>
+
+								<div className="space-y-2">
+									<Label htmlFor="tempat">Tempat</Label>
+									<Textarea
+										id="tempat"
+										name="tempat"
+										placeholder="Masukkan lokasi pendengaran"
+										value={formData.tempat}
+										onChange={handleInputChange}
+										className="min-h-[100px]"
+										required
+									/>
+								</div>
+
+								<Button type="submit" className="w-full">
+									Hantar
+								</Button>
+							</form>
+						</CardContent>
+					</Card>
+				</div>
 			</div>
-		</div>
+		</SidebarInset>
 	);
 }
