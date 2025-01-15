@@ -14,11 +14,12 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as LoginImport } from './routes/login'
-import { Route as DashboardDashboardImport } from './routes/dashboard/dashboard'
 import { Route as DashboardRespondenRespondenImport } from './routes/dashboard/responden/_responden'
 import { Route as DashboardPengaduPengaduImport } from './routes/dashboard/pengadu/_pengadu'
 import { Route as DashboardPegawaiPegawaiImport } from './routes/dashboard/pegawai/_pegawai'
 import { Route as DashboardAdminAdminImport } from './routes/dashboard/admin/_admin'
+import { Route as DashboardAdminAdminInternalUserImport } from './routes/dashboard/admin/_admin.internalUser'
+import { Route as DashboardAdminAdminHomeImport } from './routes/dashboard/admin/_admin.home'
 
 // Create Virtual Routes
 
@@ -66,12 +67,6 @@ const DashboardAdminRoute = DashboardAdminImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const DashboardDashboardRoute = DashboardDashboardImport.update({
-  id: '/dashboard/dashboard',
-  path: '/dashboard/dashboard',
-  getParentRoute: () => rootRoute,
-} as any)
-
 const DashboardRespondenRespondenRoute =
   DashboardRespondenRespondenImport.update({
     id: '/_responden',
@@ -93,6 +88,19 @@ const DashboardAdminAdminRoute = DashboardAdminAdminImport.update({
   getParentRoute: () => DashboardAdminRoute,
 } as any)
 
+const DashboardAdminAdminInternalUserRoute =
+  DashboardAdminAdminInternalUserImport.update({
+    id: '/internalUser',
+    path: '/internalUser',
+    getParentRoute: () => DashboardAdminAdminRoute,
+  } as any)
+
+const DashboardAdminAdminHomeRoute = DashboardAdminAdminHomeImport.update({
+  id: '/home',
+  path: '/home',
+  getParentRoute: () => DashboardAdminAdminRoute,
+} as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -109,13 +117,6 @@ declare module '@tanstack/react-router' {
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginImport
-      parentRoute: typeof rootRoute
-    }
-    '/dashboard/dashboard': {
-      id: '/dashboard/dashboard'
-      path: '/dashboard/dashboard'
-      fullPath: '/dashboard/dashboard'
-      preLoaderRoute: typeof DashboardDashboardImport
       parentRoute: typeof rootRoute
     }
     '/dashboard/admin': {
@@ -174,17 +175,44 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardRespondenRespondenImport
       parentRoute: typeof DashboardRespondenRoute
     }
+    '/dashboard/admin/_admin/home': {
+      id: '/dashboard/admin/_admin/home'
+      path: '/home'
+      fullPath: '/dashboard/admin/home'
+      preLoaderRoute: typeof DashboardAdminAdminHomeImport
+      parentRoute: typeof DashboardAdminAdminImport
+    }
+    '/dashboard/admin/_admin/internalUser': {
+      id: '/dashboard/admin/_admin/internalUser'
+      path: '/internalUser'
+      fullPath: '/dashboard/admin/internalUser'
+      preLoaderRoute: typeof DashboardAdminAdminInternalUserImport
+      parentRoute: typeof DashboardAdminAdminImport
+    }
   }
 }
 
 // Create and export the route tree
 
+interface DashboardAdminAdminRouteChildren {
+  DashboardAdminAdminHomeRoute: typeof DashboardAdminAdminHomeRoute
+  DashboardAdminAdminInternalUserRoute: typeof DashboardAdminAdminInternalUserRoute
+}
+
+const DashboardAdminAdminRouteChildren: DashboardAdminAdminRouteChildren = {
+  DashboardAdminAdminHomeRoute: DashboardAdminAdminHomeRoute,
+  DashboardAdminAdminInternalUserRoute: DashboardAdminAdminInternalUserRoute,
+}
+
+const DashboardAdminAdminRouteWithChildren =
+  DashboardAdminAdminRoute._addFileChildren(DashboardAdminAdminRouteChildren)
+
 interface DashboardAdminRouteChildren {
-  DashboardAdminAdminRoute: typeof DashboardAdminAdminRoute
+  DashboardAdminAdminRoute: typeof DashboardAdminAdminRouteWithChildren
 }
 
 const DashboardAdminRouteChildren: DashboardAdminRouteChildren = {
-  DashboardAdminAdminRoute: DashboardAdminAdminRoute,
+  DashboardAdminAdminRoute: DashboardAdminAdminRouteWithChildren,
 }
 
 const DashboardAdminRouteWithChildren = DashboardAdminRoute._addFileChildren(
@@ -227,36 +255,39 @@ const DashboardRespondenRouteWithChildren =
 export interface FileRoutesByFullPath {
   '/': typeof IndexLazyRoute
   '/login': typeof LoginRoute
-  '/dashboard/dashboard': typeof DashboardDashboardRoute
-  '/dashboard/admin': typeof DashboardAdminAdminRoute
+  '/dashboard/admin': typeof DashboardAdminAdminRouteWithChildren
   '/dashboard/pegawai': typeof DashboardPegawaiPegawaiRoute
   '/dashboard/pengadu': typeof DashboardPengaduPengaduRoute
   '/dashboard/responden': typeof DashboardRespondenRespondenRoute
+  '/dashboard/admin/home': typeof DashboardAdminAdminHomeRoute
+  '/dashboard/admin/internalUser': typeof DashboardAdminAdminInternalUserRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
   '/login': typeof LoginRoute
-  '/dashboard/dashboard': typeof DashboardDashboardRoute
-  '/dashboard/admin': typeof DashboardAdminAdminRoute
+  '/dashboard/admin': typeof DashboardAdminAdminRouteWithChildren
   '/dashboard/pegawai': typeof DashboardPegawaiPegawaiRoute
   '/dashboard/pengadu': typeof DashboardPengaduPengaduRoute
   '/dashboard/responden': typeof DashboardRespondenRespondenRoute
+  '/dashboard/admin/home': typeof DashboardAdminAdminHomeRoute
+  '/dashboard/admin/internalUser': typeof DashboardAdminAdminInternalUserRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexLazyRoute
   '/login': typeof LoginRoute
-  '/dashboard/dashboard': typeof DashboardDashboardRoute
   '/dashboard/admin': typeof DashboardAdminRouteWithChildren
-  '/dashboard/admin/_admin': typeof DashboardAdminAdminRoute
+  '/dashboard/admin/_admin': typeof DashboardAdminAdminRouteWithChildren
   '/dashboard/pegawai': typeof DashboardPegawaiRouteWithChildren
   '/dashboard/pegawai/_pegawai': typeof DashboardPegawaiPegawaiRoute
   '/dashboard/pengadu': typeof DashboardPengaduRouteWithChildren
   '/dashboard/pengadu/_pengadu': typeof DashboardPengaduPengaduRoute
   '/dashboard/responden': typeof DashboardRespondenRouteWithChildren
   '/dashboard/responden/_responden': typeof DashboardRespondenRespondenRoute
+  '/dashboard/admin/_admin/home': typeof DashboardAdminAdminHomeRoute
+  '/dashboard/admin/_admin/internalUser': typeof DashboardAdminAdminInternalUserRoute
 }
 
 export interface FileRouteTypes {
@@ -264,25 +295,26 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/login'
-    | '/dashboard/dashboard'
     | '/dashboard/admin'
     | '/dashboard/pegawai'
     | '/dashboard/pengadu'
     | '/dashboard/responden'
+    | '/dashboard/admin/home'
+    | '/dashboard/admin/internalUser'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/login'
-    | '/dashboard/dashboard'
     | '/dashboard/admin'
     | '/dashboard/pegawai'
     | '/dashboard/pengadu'
     | '/dashboard/responden'
+    | '/dashboard/admin/home'
+    | '/dashboard/admin/internalUser'
   id:
     | '__root__'
     | '/'
     | '/login'
-    | '/dashboard/dashboard'
     | '/dashboard/admin'
     | '/dashboard/admin/_admin'
     | '/dashboard/pegawai'
@@ -291,13 +323,14 @@ export interface FileRouteTypes {
     | '/dashboard/pengadu/_pengadu'
     | '/dashboard/responden'
     | '/dashboard/responden/_responden'
+    | '/dashboard/admin/_admin/home'
+    | '/dashboard/admin/_admin/internalUser'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexLazyRoute: typeof IndexLazyRoute
   LoginRoute: typeof LoginRoute
-  DashboardDashboardRoute: typeof DashboardDashboardRoute
   DashboardAdminRoute: typeof DashboardAdminRouteWithChildren
   DashboardPegawaiRoute: typeof DashboardPegawaiRouteWithChildren
   DashboardPengaduRoute: typeof DashboardPengaduRouteWithChildren
@@ -307,7 +340,6 @@ export interface RootRouteChildren {
 const rootRouteChildren: RootRouteChildren = {
   IndexLazyRoute: IndexLazyRoute,
   LoginRoute: LoginRoute,
-  DashboardDashboardRoute: DashboardDashboardRoute,
   DashboardAdminRoute: DashboardAdminRouteWithChildren,
   DashboardPegawaiRoute: DashboardPegawaiRouteWithChildren,
   DashboardPengaduRoute: DashboardPengaduRouteWithChildren,
@@ -326,7 +358,6 @@ export const routeTree = rootRoute
       "children": [
         "/",
         "/login",
-        "/dashboard/dashboard",
         "/dashboard/admin",
         "/dashboard/pegawai",
         "/dashboard/pengadu",
@@ -339,9 +370,6 @@ export const routeTree = rootRoute
     "/login": {
       "filePath": "login.tsx"
     },
-    "/dashboard/dashboard": {
-      "filePath": "dashboard/dashboard.tsx"
-    },
     "/dashboard/admin": {
       "filePath": "dashboard/admin",
       "children": [
@@ -350,7 +378,11 @@ export const routeTree = rootRoute
     },
     "/dashboard/admin/_admin": {
       "filePath": "dashboard/admin/_admin.tsx",
-      "parent": "/dashboard/admin"
+      "parent": "/dashboard/admin",
+      "children": [
+        "/dashboard/admin/_admin/home",
+        "/dashboard/admin/_admin/internalUser"
+      ]
     },
     "/dashboard/pegawai": {
       "filePath": "dashboard/pegawai",
@@ -381,6 +413,14 @@ export const routeTree = rootRoute
     "/dashboard/responden/_responden": {
       "filePath": "dashboard/responden/_responden.tsx",
       "parent": "/dashboard/responden"
+    },
+    "/dashboard/admin/_admin/home": {
+      "filePath": "dashboard/admin/_admin.home.tsx",
+      "parent": "/dashboard/admin/_admin"
+    },
+    "/dashboard/admin/_admin/internalUser": {
+      "filePath": "dashboard/admin/_admin.internalUser.tsx",
+      "parent": "/dashboard/admin/_admin"
     }
   }
 }
