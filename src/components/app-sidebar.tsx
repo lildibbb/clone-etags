@@ -19,111 +19,133 @@ import {
 import type * as React from "react";
 
 // Define different navigation items for each user type
-const navItems = {
+const navSections = {
 	admin: [
 		{
-			title: "Dashboard",
-			url: "/dashboard/admin/home",
-			icon: Home,
-			isActive: true,
-		},
-		{
-			title: "User Management",
-			url: "/admin/users",
-			icon: Users,
-			isActive: true,
+			// No label for the dashboard section
 			items: [
 				{
-					title: "Internal User",
-					url: "#",
-				},
-				{
-					title: "External User",
-					url: "#",
+					title: "Dashboard",
+					url: "/dashboard/admin/home",
+					icon: Home,
 				},
 			],
 		},
 		{
-			title: "System Settings",
-			url: "/admin/settings",
-			icon: Settings,
-			isActive: false,
+			label: "Management",
+			items: [
+				{
+					title: "User Management",
+					url: "/admin/users",
+					icon: Users,
+					isActive: true,
+					items: [
+						{
+							title: "Internal User",
+							url: "#",
+						},
+						{
+							title: "External User",
+							url: "#",
+						},
+					],
+				},
+				{
+					title: "System Settings",
+					url: "/admin/settings",
+					icon: Settings,
+				},
+			],
 		},
 	],
 	pegawai: [
 		{
-			title: "Dashboard",
-			url: "/dashboard/pegawai/home",
-			icon: Home,
-			isActive: true,
-		},
-		{
-			title: "Lapor Aduan Baru",
-			url: "/dashboard/pegawai/aduan-baru/borang3",
-			icon: FileText,
-			isActive: true,
 			items: [
 				{
-					title: "Borang 3",
-					url: "/dashboard/pegawai/aduan-baru/borang3",
-				},
-				{
-					title: "Borang 4",
-					url: "/dashboard/pegawai/aduan-baru/borang4",
+					title: "Dashboard",
+					url: "/dashboard/pegawai/home",
+					icon: Home,
+					isActive: true,
 				},
 			],
 		},
 		{
-			title: "Reports",
-			url: "/dashboard/pegawai/reports",
-			icon: Clipboard,
-			isActive: true,
+			label: "Aduan",
 			items: [
+				{
+					title: "Lapor Aduan Baru",
+					url: "/pegawai/aduan-baru/borang3",
+					icon: FileText,
+					isActive: true,
+					items: [
+						{
+							title: "Borang 3",
+							url: "/dashboard/pegawai/aduan-baru/borang3",
+						},
+						{
+							title: "Borang 4",
+							url: "/dashboard/pegawai/aduan-baru/borang4",
+						},
+					],
+				},
 				{
 					title: "Senarai Aduan",
 					url: "/dashboard/pegawai/senarai-aduan",
+					icon: Clipboard,
 				},
 			],
 		},
 	],
 	pengadu: [
 		{
-			title: "Dashboard",
-			url: "/dashboard/pengadu/home",
-			icon: Home,
-			isActive: true,
+			items: [
+				{
+					title: "Dashboard",
+					url: "/dashboard/pengadu/home",
+					icon: Home,
+				},
+			],
 		},
 		{
-			title: "Submit Complaint",
-			url: "/pengadu/submit",
-			icon: MessageSquare,
-			isActive: false,
-		},
-		{
-			title: "My Complaints",
-			url: "/pengadu/complaints",
-			icon: FileText,
-			isActive: false,
+			label: "Aduan",
+			items: [
+				{
+					title: "Submit Complaint",
+					url: "/pengadu/submit",
+					icon: MessageSquare,
+				},
+				{
+					title: "My Complaints",
+					url: "/pengadu/complaints",
+					icon: FileText,
+				},
+			],
 		},
 	],
 	responden: [
 		{
-			title: "Dashboard",
-			url: "/dashboard/responden/home",
-			icon: Home,
-			isActive: true,
+			items: [
+				{
+					title: "Dashboard",
+					url: "/dashboard/responden/home",
+					icon: Home,
+				},
+			],
 		},
 		{
-			title: "Surveys",
-			url: "/responden/surveys",
-			icon: Clipboard,
-			isActive: false,
-		},
-		{
-			title: "My Responses",
-			url: "/responden/responses",
-			icon: FileText,
-			isActive: false,
+			label: "Aduan",
+			items: [
+				{
+					title: "Surveys",
+					url: "/responden/surveys",
+					icon: Clipboard,
+				},
+				{
+					title: "My Responses",
+					url: "/responden/responses",
+					icon: FileText,
+				},
+			],
 		},
 	],
 };
@@ -162,7 +184,7 @@ interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
 
 export function AppSidebar({ userType, ...props }: AppSidebarProps) {
 	const currentUser = users[userType];
-	const currentNavItems = navItems[userType];
+	const currentNavSections = navSections[userType];
 
 	return (
 		<Sidebar collapsible="icon" {...props}>
@@ -178,7 +200,7 @@ export function AppSidebar({ userType, ...props }: AppSidebarProps) {
 				</div>
 			</SidebarHeader>
 			<SidebarContent>
-				<NavMain items={currentNavItems} />
+				<NavMain sections={currentNavSections} />
 			</SidebarContent>
 			<SidebarFooter>
 				<NavUser user={currentUser} />
