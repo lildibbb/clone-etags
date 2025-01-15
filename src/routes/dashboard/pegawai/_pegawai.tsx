@@ -1,21 +1,20 @@
 import { AppSidebar } from "@/components/app-sidebar";
 import { SidebarProvider } from "@/components/ui/sidebar";
-import { createFileRoute, Outlet } from "@tanstack/react-router";
+import { Outlet, createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/dashboard/pegawai/_pegawai")({
-  component: RouteComponent,
+	component: RouteComponent,
 });
 
 function RouteComponent() {
-  return (
-    <div className="flex min-h-screen">
-      <SidebarProvider>
-        <AppSidebar />
-      </SidebarProvider>
-
-      <div className="flex-1 flex flex-col overflow-hidden">
-        <Outlet />
-      </div>
-    </div>
-  );
+	return (
+		<div className="flex min-h-screen">
+			<SidebarProvider>
+				<AppSidebar userType="pegawai" />
+				<div className="flex-1 flex flex-col">
+					<Outlet />
+				</div>
+			</SidebarProvider>
+		</div>
+	);
 }

@@ -8,22 +8,23 @@ import {
 	SidebarHeader,
 	SidebarRail,
 } from "@/components/ui/sidebar";
-import { Frame, PieChart, SquareTerminal } from "lucide-react";
+import {
+	Clipboard,
+	FileText,
+	MessageSquare,
+	Settings,
+	Users,
+} from "lucide-react";
 import type * as React from "react";
 
-// This is sample data.
-const data = {
-	user: {
-		name: "shadcn",
-		email: "m@example.com",
-		avatar: "/avatars/shadcn.jpg",
-	},
-	navMain: [
+// Define different navigation items for each user type
+const navItems = {
+	admin: [
 		{
 			title: "User Management",
-			url: "#",
-			icon: SquareTerminal,
-			isActive: true,
+			url: "/admin/users",
+			icon: Users,
+			isActive: false,
 			items: [
 				{
 					title: "Internal User",
@@ -35,44 +36,127 @@ const data = {
 				},
 			],
 		},
+		{
+			title: "System Settings",
+			url: "/admin/settings",
+			icon: Settings,
+			isActive: false,
+		},
 	],
-	projects: [
+	pegawai: [
 		{
-			name: "Design Engineering",
-			url: "#",
-			icon: Frame,
+			title: "Lapor Aduan Baru",
+			url: "/pegawai/aduan-baru/borang3",
+			icon: FileText,
+			isActive: true,
+			items: [
+				{
+					title: "Borang 3",
+					url: "/pegawai/aduan-baru/borang3",
+				},
+				{
+					title: "Borang 4",
+					url: "/pegawai/aduan-baru/borang4",
+				},
+			],
 		},
 		{
-			name: "Sales & Marketing",
-			url: "#",
-			icon: PieChart,
+			title: "Reports",
+			url: "/pegawai/reports",
+			icon: Clipboard,
+			isActive: true,
+			items: [
+				{
+					title: "Senarai Aduan",
+					url: "/pegawai/senarai-aduan",
+				},
+			],
+		},
+	],
+	pengadu: [
+		{
+			title: "Submit Complaint",
+			url: "/pengadu/submit",
+			icon: MessageSquare,
+			isActive: false,
 		},
 		{
-			name: "Travel",
-			url: "#",
-			icon: Map,
+			title: "My Complaints",
+			url: "/pengadu/complaints",
+			icon: FileText,
+			isActive: false,
+		},
+	],
+	responden: [
+		{
+			title: "Surveys",
+			url: "/responden/surveys",
+			icon: Clipboard,
+			isActive: false,
+		},
+		{
+			title: "My Responses",
+			url: "/responden/responses",
+			icon: FileText,
+			isActive: false,
 		},
 	],
 };
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+// Sample user data for different types
+const users = {
+	admin: {
+		name: "Admin User",
+		email: "admin@example.com",
+		avatar: "/avatars/admin.jpg",
+		type: "admin",
+	},
+	pegawai: {
+		name: "Pegawai User",
+		email: "pegawai@example.com",
+		avatar: "/avatars/pegawai.jpg",
+		type: "pegawai",
+	},
+	pengadu: {
+		name: "Pengadu User",
+		email: "pengadu@example.com",
+		avatar: "/avatars/pengadu.jpg",
+		type: "pengadu",
+	},
+	responden: {
+		name: "Responden User",
+		email: "responden@example.com",
+		avatar: "/avatars/responden.jpg",
+		type: "responden",
+	},
+};
+
+interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
+	userType: "admin" | "pegawai" | "pengadu" | "responden";
+}
+
+export function AppSidebar({ userType, ...props }: AppSidebarProps) {
+	const currentUser = users[userType];
+	const currentNavItems = navItems[userType];
+
 	return (
 		<Sidebar collapsible="icon" {...props}>
-			{/* TODO */}
 			<SidebarHeader>
-				<div className="flex">
-					<div className="flex-grow-0 flex-shrink-0 w-12 flex justify-normal">
+				<div className="flex items-center">
+					<div className="flex-shrink-0 w-12 flex justify-center">
 						<img src={JataNegara} alt="Jata Negara" className="w-8 h-8" />
 					</div>
-					<div className="">e-TAGS</div>
-					<div className="">KPWKM</div>
+					<div className="ml-2">
+						<div className="font-bold">e-TAGS</div>
+						<div className="text-sm">KPWKM</div>
+					</div>
 				</div>
 			</SidebarHeader>
 			<SidebarContent>
-				<NavMain items={data.navMain} />
+				<NavMain items={currentNavItems} />
 			</SidebarContent>
 			<SidebarFooter>
-				<NavUser user={data.user} />
+				<NavUser user={currentUser} />
 			</SidebarFooter>
 			<SidebarRail />
 		</Sidebar>

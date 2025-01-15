@@ -1,3 +1,5 @@
+import background from "@/assets/anti.jpg";
+import logo from "@/assets/jata-negara.svg";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import {
@@ -20,8 +22,6 @@ import {
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { AlertCircle } from "lucide-react";
 import { useState } from "react";
-import background from "../assets/anti.jpg";
-import logo from "../assets/jata-negara.svg";
 
 // Route definition
 export const Route = createFileRoute("/login")({
@@ -76,13 +76,13 @@ function RouteComponent() {
 					navigate({ to: "/dashboard/admin/home" });
 					break;
 				case "pegawai":
-					navigate({ to: "/dashboard/pegawai" });
-					break;
-				case "responden":
-					navigate({ to: "/dashboard/admin" });
+					navigate({ to: "/dashboard/pegawai/home" });
 					break;
 				case "pengadu":
-					navigate({ to: "/dashboard/admin" });
+					navigate({ to: "/dashboard/pengadu/home" });
+					break;
+				case "responden":
+					navigate({ to: "/dashboard/responden/home" });
 					break;
 				default:
 					setError("Invalid role");
