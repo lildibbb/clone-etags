@@ -3,15 +3,15 @@ import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { Outlet, createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/dashboard/admin/_admin")({
-	component: RouteComponent,
+  component: RouteComponent,
 });
 
 function RouteComponent() {
-	return (
-		<SidebarProvider>
-			<AppSidebar userType="admin" />
-			<SidebarInset>
-				{/* <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
+  return (
+    <SidebarProvider>
+      <AppSidebar userType="admin" />
+      <SidebarInset>
+        {/* <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
 					<div className="flex items-center gap-2 px-4">
 						<SidebarTrigger className="-ml-1" />
 						<Separator orientation="vertical" className="mr-2 h-4" />
@@ -28,10 +28,10 @@ function RouteComponent() {
 						</Breadcrumb>
 					</div>
 				</header> */}
-				<div className="flex-1 flex flex-col">
-					<Outlet />
-				</div>
-			</SidebarInset>
-		</SidebarProvider>
-	);
+        <div className="flex-1 flex flex-col">
+          <Outlet />
+        </div>
+      </SidebarInset>
+    </SidebarProvider>
+  );
 }
