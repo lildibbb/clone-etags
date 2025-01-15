@@ -11,6 +11,7 @@ import {
 import {
 	Clipboard,
 	FileText,
+	Home,
 	MessageSquare,
 	Settings,
 	Users,
@@ -21,10 +22,16 @@ import type * as React from "react";
 const navItems = {
 	admin: [
 		{
+			title: "Dashboard",
+			url: "/dashboard/admin/home",
+			icon: Home,
+			isActive: true,
+		},
+		{
 			title: "User Management",
 			url: "/admin/users",
 			icon: Users,
-			isActive: false,
+			isActive: true,
 			items: [
 				{
 					title: "Internal User",
@@ -45,8 +52,14 @@ const navItems = {
 	],
 	pegawai: [
 		{
+			title: "Dashboard",
+			url: "/dashboard/pegawai/home",
+			icon: Home,
+			isActive: true,
+		},
+		{
 			title: "Lapor Aduan Baru",
-			url: "/pegawai/aduan-baru/borang3",
+			url: "/dashboard/pegawai/aduan-baru/borang3",
 			icon: FileText,
 			isActive: true,
 			items: [
@@ -62,7 +75,7 @@ const navItems = {
 		},
 		{
 			title: "Reports",
-			url: "/pegawai/reports",
+			url: "/dashboard/pegawai/reports",
 			icon: Clipboard,
 			isActive: true,
 			items: [
@@ -74,6 +87,12 @@ const navItems = {
 		},
 	],
 	pengadu: [
+		{
+			title: "Dashboard",
+			url: "/dashboard/pengadu/home",
+			icon: Home,
+			isActive: true,
+		},
 		{
 			title: "Submit Complaint",
 			url: "/pengadu/submit",
@@ -88,6 +107,12 @@ const navItems = {
 		},
 	],
 	responden: [
+		{
+			title: "Dashboard",
+			url: "/dashboard/responden/home",
+			icon: Home,
+			isActive: true,
+		},
 		{
 			title: "Surveys",
 			url: "/responden/surveys",
