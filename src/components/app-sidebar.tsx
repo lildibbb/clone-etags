@@ -110,12 +110,12 @@ const navSections = {
       items: [
         {
           title: "Submit Complaint",
-          url: "/pengadu/aduan-baru/borang1",
+          url: "/dashboard/pengadu/aduan-baru/borang1",
           icon: MessageSquare,
         },
         {
           title: "My Complaints",
-          url: "/pengadu/complaints",
+          url: "/dashboard/pengadu/senarai-aduan",
           icon: FileText,
         },
       ],
