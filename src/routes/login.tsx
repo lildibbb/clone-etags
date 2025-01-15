@@ -29,7 +29,7 @@ export const Route = createFileRoute("/login")({
 });
 
 // Mock Users with explicit index signature
-export const mockUsers: {
+const mockUsers: {
   [key: number]: { email: string; password: string; role: string };
 } = {
   1: { email: "admin@example.com", password: "admin123", role: "admin" },
@@ -73,7 +73,7 @@ function RouteComponent() {
     if (user) {
       switch (user.role) {
         case "admin":
-          navigate({ to: "/dashboard/admin" });
+          navigate({ to: "/dashboard/admin/home" });
           break;
         case "pegawai":
           navigate({ to: "/dashboard/pegawai" });
