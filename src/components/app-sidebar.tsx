@@ -1,4 +1,3 @@
-import JataNegara from "@/assets/jata-negara.svg";
 import { NavMain } from "@/components/nav-main";
 import { NavUser } from "@/components/nav-user";
 import {
@@ -17,6 +16,7 @@ import {
 	Users,
 } from "lucide-react";
 import type * as React from "react";
+import JataNegara from "/jata-negara.svg";
 
 // Define different navigation items for each user type
 const navSections = {
