@@ -83,8 +83,9 @@ function RouteComponent() {
 					</Breadcrumb>
 				</div>
 			</header>
+
 			<div className="flex-1">
-				<div className="container mx-auto max-w-2xl">
+				<div className="container mx-auto max-w-4xl">
 					<Card>
 						<CardHeader className="space-y-1">
 							<CardTitle className="text-2xl">
@@ -133,7 +134,7 @@ function RouteComponent() {
 
 								<div className="space-y-2">
 									<Label>Tarikh & Masa</Label>
-									<div>
+									<div className="relative">
 										<DateTimePicker />
 									</div>
 								</div>
