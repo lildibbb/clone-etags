@@ -35,7 +35,7 @@ const data = {
     {
       name: "e-TAGS",
       logo: GalleryVerticalEnd,
-      plan: "Enterprise",
+      plan: "",
     },
   ],
   navMain: [
@@ -144,9 +144,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <img src={logo} alt="" />
-        <h2>e-TAGS</h2>
-        {/* <TeamSwitcher teams={data.teams} /> */}
+        {/* <img src={logo} alt="" /> */}
+        <TeamSwitcher teams={data.teams} />
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
