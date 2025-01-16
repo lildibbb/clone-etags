@@ -41,11 +41,11 @@ const navSections = {
 					items: [
 						{
 							title: "Pengguna Dalaman",
-							url: "/dashboard/admin/manage/internal-users",
+							url: "/dashboard/admin/manage/pengguna-dalaman",
 						},
 						{
 							title: "Pengguna Luaran",
-							url: "/dashboard/admin/manage/external-users",
+							url: "/dashboard/admin/manage/pengguna-luaran",
 						},
 					],
 				},
@@ -109,7 +109,7 @@ const navSections = {
 			label: "Aduan",
 			items: [
 				{
-					title: "Aduan Baru (Borang 1)",
+					title: "Borang 1 - Aduan Gangguan Seksual",
 					url: "/dashboard/pengadu/aduan-baru/borang-1",
 					icon: MessageSquare,
 				},
@@ -135,7 +135,7 @@ const navSections = {
 			label: "Aduan",
 			items: [
 				{
-					title: "Aduan Baru (Borang 2)",
+					title: "Borang 2 - Pernyataan Pembelaan",
 					url: "/dashboard/responden/aduan-baru/borang-2",
 					icon: MessageSquare,
 				},
@@ -151,17 +151,11 @@ const navSections = {
 
 // Sample user data for different types
 const users = {
-	admin: {
-		name: "Admin User",
-		email: "admin@example.com",
-		avatar: "/avatars/admin.jpg",
-		type: "admin",
-	},
-	pegawai: {
-		name: "Pegawai User",
-		email: "pegawai@example.com",
-		avatar: "/avatars/pegawai.jpg",
-		type: "pegawai",
+	responden: {
+		name: "Responden User",
+		email: "responden@example.com",
+		avatar: "/avatars/responden.jpg",
+		type: "responden",
 	},
 	pengadu: {
 		name: "Pengadu User",
@@ -169,11 +163,17 @@ const users = {
 		avatar: "/avatars/pengadu.jpg",
 		type: "pengadu",
 	},
-	responden: {
-		name: "Responden User",
-		email: "responden@example.com",
-		avatar: "/avatars/responden.jpg",
-		type: "responden",
+	pegawai: {
+		name: "Pegawai User",
+		email: "pegawai@example.com",
+		avatar: "/avatars/pegawai.jpg",
+		type: "pegawai",
+	},
+	admin: {
+		name: "Admin User",
+		email: "admin@example.com",
+		avatar: "/avatars/admin.jpg",
+		type: "admin",
 	},
 };
 
@@ -188,21 +188,30 @@ export function AppSidebar({ userType, ...props }: AppSidebarProps) {
 	return (
 		<Sidebar collapsible="icon" {...props}>
 			<SidebarHeader>
-				<div className="flex items-center gap-3 px-2 group-data-[collapsible=icon]:justify-center">
-					<div className="flex-shrink-0 w-12 h-12 flex items-center justify-center group-data-[collapsible=icon]:w-8 group-data-[collapsible=icon]:h-8">
+				<div className="flex flex-col items-center gap-4 px-3 py-4 group-data-[collapsible=icon]:justify-center">
+					{/* Centered Logo Section */}
+					<div className="relative flex-shrink-0 w-24 h-24 flex items-center justify-center rounded-xl bg-white/10 p-3 group-data-[collapsible=icon]:w-10 group-data-[collapsible=icon]:h-10">
 						<img
 							src="/jata-negara.svg"
 							alt="Jata Negara"
-							className="w-10 h-10 group-data-[collapsible=icon]:w-6 group-data-[collapsible=icon]:h-6"
+							className="w-full h-full object-contain group-data-[collapsible=icon]:w-8 group-data-[collapsible=icon]:h-8"
 						/>
 					</div>
-					<div className="flex flex-col min-w-0 group-data-[collapsible=icon]:hidden">
-						<div className="text-lg font-bold">e-TAGS</div>
-						<div className="text-xs text-muted-foreground leading-tight">
-							Kementerian Pembangunan Wanita,
+
+					{/* Text Section - Centered below logo */}
+					<div className="flex flex-col items-center text-center space-y-2 group-data-[collapsible=icon]:hidden">
+						{/* Main Title */}
+						<div className="space-y-1">
+							<div className="text-base font-bold leading-tight">
+								e-TRIBUNAL BAGI ANTIGANGGUAN SEKSUAL
+							</div>
 						</div>
-						<div className="text-xs text-muted-foreground leading-tight">
-							Keluarga dan Masyarakat (KPWKM)
+
+						{/* Ministry Name */}
+						<div className="space-y-0.5 border-t border-border/50 pt-2 mt-1">
+							<div className="text-[14px] font-medium text-muted-foreground/90">
+								Kementerian Pembangunan Wanita, Keluarga dan Masyarakat (KPWKM)
+							</div>
 						</div>
 					</div>
 				</div>

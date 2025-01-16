@@ -30,8 +30,8 @@ import { Route as DashboardRespondenRespondenAduanBaruBorang2Import } from './ro
 import { Route as DashboardPengaduPengaduAduanBaruBorang1Import } from './routes/dashboard/pengadu/_pengadu/aduan-baru/borang-1'
 import { Route as DashboardPegawaiPegawaiAduanBaruBorang4Import } from './routes/dashboard/pegawai/_pegawai/aduan-baru/borang-4'
 import { Route as DashboardPegawaiPegawaiAduanBaruBorang3Import } from './routes/dashboard/pegawai/_pegawai/aduan-baru/borang-3'
-import { Route as DashboardAdminAdminManageInternalUsersImport } from './routes/dashboard/admin/_admin/manage/internal-users'
-import { Route as DashboardAdminAdminManageExternalUsersImport } from './routes/dashboard/admin/_admin/manage/external-users'
+import { Route as DashboardAdminAdminManagePenggunaLuaranImport } from './routes/dashboard/admin/_admin/manage/pengguna-luaran'
+import { Route as DashboardAdminAdminManagePenggunaDalamanImport } from './routes/dashboard/admin/_admin/manage/pengguna-dalaman'
 
 // Create Virtual Routes
 
@@ -183,17 +183,17 @@ const DashboardPegawaiPegawaiAduanBaruBorang3Route =
     getParentRoute: () => DashboardPegawaiPegawaiRoute,
   } as any)
 
-const DashboardAdminAdminManageInternalUsersRoute =
-  DashboardAdminAdminManageInternalUsersImport.update({
-    id: '/manage/internal-users',
-    path: '/manage/internal-users',
+const DashboardAdminAdminManagePenggunaLuaranRoute =
+  DashboardAdminAdminManagePenggunaLuaranImport.update({
+    id: '/manage/pengguna-luaran',
+    path: '/manage/pengguna-luaran',
     getParentRoute: () => DashboardAdminAdminRoute,
   } as any)
 
-const DashboardAdminAdminManageExternalUsersRoute =
-  DashboardAdminAdminManageExternalUsersImport.update({
-    id: '/manage/external-users',
-    path: '/manage/external-users',
+const DashboardAdminAdminManagePenggunaDalamanRoute =
+  DashboardAdminAdminManagePenggunaDalamanImport.update({
+    id: '/manage/pengguna-dalaman',
+    path: '/manage/pengguna-dalaman',
     getParentRoute: () => DashboardAdminAdminRoute,
   } as any)
 
@@ -327,18 +327,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardRespondenRespondenIndexImport
       parentRoute: typeof DashboardRespondenRespondenImport
     }
-    '/dashboard/admin/_admin/manage/external-users': {
-      id: '/dashboard/admin/_admin/manage/external-users'
-      path: '/manage/external-users'
-      fullPath: '/dashboard/admin/manage/external-users'
-      preLoaderRoute: typeof DashboardAdminAdminManageExternalUsersImport
+    '/dashboard/admin/_admin/manage/pengguna-dalaman': {
+      id: '/dashboard/admin/_admin/manage/pengguna-dalaman'
+      path: '/manage/pengguna-dalaman'
+      fullPath: '/dashboard/admin/manage/pengguna-dalaman'
+      preLoaderRoute: typeof DashboardAdminAdminManagePenggunaDalamanImport
       parentRoute: typeof DashboardAdminAdminImport
     }
-    '/dashboard/admin/_admin/manage/internal-users': {
-      id: '/dashboard/admin/_admin/manage/internal-users'
-      path: '/manage/internal-users'
-      fullPath: '/dashboard/admin/manage/internal-users'
-      preLoaderRoute: typeof DashboardAdminAdminManageInternalUsersImport
+    '/dashboard/admin/_admin/manage/pengguna-luaran': {
+      id: '/dashboard/admin/_admin/manage/pengguna-luaran'
+      path: '/manage/pengguna-luaran'
+      fullPath: '/dashboard/admin/manage/pengguna-luaran'
+      preLoaderRoute: typeof DashboardAdminAdminManagePenggunaLuaranImport
       parentRoute: typeof DashboardAdminAdminImport
     }
     '/dashboard/pegawai/_pegawai/aduan-baru/borang-3': {
@@ -377,18 +377,18 @@ declare module '@tanstack/react-router' {
 interface DashboardAdminAdminRouteChildren {
   DashboardAdminAdminPengurusanSistemRoute: typeof DashboardAdminAdminPengurusanSistemRoute
   DashboardAdminAdminIndexRoute: typeof DashboardAdminAdminIndexRoute
-  DashboardAdminAdminManageExternalUsersRoute: typeof DashboardAdminAdminManageExternalUsersRoute
-  DashboardAdminAdminManageInternalUsersRoute: typeof DashboardAdminAdminManageInternalUsersRoute
+  DashboardAdminAdminManagePenggunaDalamanRoute: typeof DashboardAdminAdminManagePenggunaDalamanRoute
+  DashboardAdminAdminManagePenggunaLuaranRoute: typeof DashboardAdminAdminManagePenggunaLuaranRoute
 }
 
 const DashboardAdminAdminRouteChildren: DashboardAdminAdminRouteChildren = {
   DashboardAdminAdminPengurusanSistemRoute:
     DashboardAdminAdminPengurusanSistemRoute,
   DashboardAdminAdminIndexRoute: DashboardAdminAdminIndexRoute,
-  DashboardAdminAdminManageExternalUsersRoute:
-    DashboardAdminAdminManageExternalUsersRoute,
-  DashboardAdminAdminManageInternalUsersRoute:
-    DashboardAdminAdminManageInternalUsersRoute,
+  DashboardAdminAdminManagePenggunaDalamanRoute:
+    DashboardAdminAdminManagePenggunaDalamanRoute,
+  DashboardAdminAdminManagePenggunaLuaranRoute:
+    DashboardAdminAdminManagePenggunaLuaranRoute,
 }
 
 const DashboardAdminAdminRouteWithChildren =
@@ -519,8 +519,8 @@ export interface FileRoutesByFullPath {
   '/dashboard/pegawai/': typeof DashboardPegawaiPegawaiIndexRoute
   '/dashboard/pengadu/': typeof DashboardPengaduPengaduIndexRoute
   '/dashboard/responden/': typeof DashboardRespondenRespondenIndexRoute
-  '/dashboard/admin/manage/external-users': typeof DashboardAdminAdminManageExternalUsersRoute
-  '/dashboard/admin/manage/internal-users': typeof DashboardAdminAdminManageInternalUsersRoute
+  '/dashboard/admin/manage/pengguna-dalaman': typeof DashboardAdminAdminManagePenggunaDalamanRoute
+  '/dashboard/admin/manage/pengguna-luaran': typeof DashboardAdminAdminManagePenggunaLuaranRoute
   '/dashboard/pegawai/aduan-baru/borang-3': typeof DashboardPegawaiPegawaiAduanBaruBorang3Route
   '/dashboard/pegawai/aduan-baru/borang-4': typeof DashboardPegawaiPegawaiAduanBaruBorang4Route
   '/dashboard/pengadu/aduan-baru/borang-1': typeof DashboardPengaduPengaduAduanBaruBorang1Route
@@ -538,8 +538,8 @@ export interface FileRoutesByTo {
   '/dashboard/pegawai/senarai-aduan': typeof DashboardPegawaiPegawaiSenaraiAduanRoute
   '/dashboard/pengadu/senarai-aduan': typeof DashboardPengaduPengaduSenaraiAduanRoute
   '/dashboard/responden/senarai-aduan': typeof DashboardRespondenRespondenSenaraiAduanRoute
-  '/dashboard/admin/manage/external-users': typeof DashboardAdminAdminManageExternalUsersRoute
-  '/dashboard/admin/manage/internal-users': typeof DashboardAdminAdminManageInternalUsersRoute
+  '/dashboard/admin/manage/pengguna-dalaman': typeof DashboardAdminAdminManagePenggunaDalamanRoute
+  '/dashboard/admin/manage/pengguna-luaran': typeof DashboardAdminAdminManagePenggunaLuaranRoute
   '/dashboard/pegawai/aduan-baru/borang-3': typeof DashboardPegawaiPegawaiAduanBaruBorang3Route
   '/dashboard/pegawai/aduan-baru/borang-4': typeof DashboardPegawaiPegawaiAduanBaruBorang4Route
   '/dashboard/pengadu/aduan-baru/borang-1': typeof DashboardPengaduPengaduAduanBaruBorang1Route
@@ -566,8 +566,8 @@ export interface FileRoutesById {
   '/dashboard/pegawai/_pegawai/': typeof DashboardPegawaiPegawaiIndexRoute
   '/dashboard/pengadu/_pengadu/': typeof DashboardPengaduPengaduIndexRoute
   '/dashboard/responden/_responden/': typeof DashboardRespondenRespondenIndexRoute
-  '/dashboard/admin/_admin/manage/external-users': typeof DashboardAdminAdminManageExternalUsersRoute
-  '/dashboard/admin/_admin/manage/internal-users': typeof DashboardAdminAdminManageInternalUsersRoute
+  '/dashboard/admin/_admin/manage/pengguna-dalaman': typeof DashboardAdminAdminManagePenggunaDalamanRoute
+  '/dashboard/admin/_admin/manage/pengguna-luaran': typeof DashboardAdminAdminManagePenggunaLuaranRoute
   '/dashboard/pegawai/_pegawai/aduan-baru/borang-3': typeof DashboardPegawaiPegawaiAduanBaruBorang3Route
   '/dashboard/pegawai/_pegawai/aduan-baru/borang-4': typeof DashboardPegawaiPegawaiAduanBaruBorang4Route
   '/dashboard/pengadu/_pengadu/aduan-baru/borang-1': typeof DashboardPengaduPengaduAduanBaruBorang1Route
@@ -591,8 +591,8 @@ export interface FileRouteTypes {
     | '/dashboard/pegawai/'
     | '/dashboard/pengadu/'
     | '/dashboard/responden/'
-    | '/dashboard/admin/manage/external-users'
-    | '/dashboard/admin/manage/internal-users'
+    | '/dashboard/admin/manage/pengguna-dalaman'
+    | '/dashboard/admin/manage/pengguna-luaran'
     | '/dashboard/pegawai/aduan-baru/borang-3'
     | '/dashboard/pegawai/aduan-baru/borang-4'
     | '/dashboard/pengadu/aduan-baru/borang-1'
@@ -609,8 +609,8 @@ export interface FileRouteTypes {
     | '/dashboard/pegawai/senarai-aduan'
     | '/dashboard/pengadu/senarai-aduan'
     | '/dashboard/responden/senarai-aduan'
-    | '/dashboard/admin/manage/external-users'
-    | '/dashboard/admin/manage/internal-users'
+    | '/dashboard/admin/manage/pengguna-dalaman'
+    | '/dashboard/admin/manage/pengguna-luaran'
     | '/dashboard/pegawai/aduan-baru/borang-3'
     | '/dashboard/pegawai/aduan-baru/borang-4'
     | '/dashboard/pengadu/aduan-baru/borang-1'
@@ -635,8 +635,8 @@ export interface FileRouteTypes {
     | '/dashboard/pegawai/_pegawai/'
     | '/dashboard/pengadu/_pengadu/'
     | '/dashboard/responden/_responden/'
-    | '/dashboard/admin/_admin/manage/external-users'
-    | '/dashboard/admin/_admin/manage/internal-users'
+    | '/dashboard/admin/_admin/manage/pengguna-dalaman'
+    | '/dashboard/admin/_admin/manage/pengguna-luaran'
     | '/dashboard/pegawai/_pegawai/aduan-baru/borang-3'
     | '/dashboard/pegawai/_pegawai/aduan-baru/borang-4'
     | '/dashboard/pengadu/_pengadu/aduan-baru/borang-1'
@@ -698,8 +698,8 @@ export const routeTree = rootRoute
       "children": [
         "/dashboard/admin/_admin/pengurusan-sistem",
         "/dashboard/admin/_admin/",
-        "/dashboard/admin/_admin/manage/external-users",
-        "/dashboard/admin/_admin/manage/internal-users"
+        "/dashboard/admin/_admin/manage/pengguna-dalaman",
+        "/dashboard/admin/_admin/manage/pengguna-luaran"
       ]
     },
     "/dashboard/pegawai": {
@@ -780,12 +780,12 @@ export const routeTree = rootRoute
       "filePath": "dashboard/responden/_responden.index.tsx",
       "parent": "/dashboard/responden/_responden"
     },
-    "/dashboard/admin/_admin/manage/external-users": {
-      "filePath": "dashboard/admin/_admin/manage/external-users.tsx",
+    "/dashboard/admin/_admin/manage/pengguna-dalaman": {
+      "filePath": "dashboard/admin/_admin/manage/pengguna-dalaman.tsx",
       "parent": "/dashboard/admin/_admin"
     },
-    "/dashboard/admin/_admin/manage/internal-users": {
-      "filePath": "dashboard/admin/_admin/manage/internal-users.tsx",
+    "/dashboard/admin/_admin/manage/pengguna-luaran": {
+      "filePath": "dashboard/admin/_admin/manage/pengguna-luaran.tsx",
       "parent": "/dashboard/admin/_admin"
     },
     "/dashboard/pegawai/_pegawai/aduan-baru/borang-3": {

@@ -91,7 +91,7 @@ function RouteComponent() {
 				<Card className="border-none shadow-lg">
 					<CardHeader className="text-center border-b bg-card">
 						<CardTitle className="text-2xl font-semibold text-primary">
-							BORANG 1 : PERNYATAAN PEMBELAAN
+							BORANG 2 : PERNYATAAN PEMBELAAN
 						</CardTitle>
 						<CardDescription>
 							Sila lengkapkan semua maklumat yang diperlukan
@@ -132,7 +132,7 @@ function RouteComponent() {
 								</TabsContent>
 
 								<TabsContent value="C">
-									<PaymentForm />
+									<PaymentForm type="borang-2" />
 								</TabsContent>
 
 								<div className="flex justify-between mt-6 pt-6 border-t">

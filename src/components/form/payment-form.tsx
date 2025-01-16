@@ -21,7 +21,11 @@ import PublicBank from "../../assets/bank-logos/PublicBank.svg";
 import UOB from "../../assets/bank-logos/UOB.svg";
 import Maybank from "../../assets/bank-logos/maybank.svg";
 
-export function PaymentForm() {
+interface PaymentFormProps {
+	type: string;
+}
+
+export function PaymentForm({ type }: PaymentFormProps) {
 	const [isModalOpen, setIsModalOpen] = useState(false); // State for modal visibility
 
 	const banks = [
@@ -48,9 +52,9 @@ export function PaymentForm() {
 
 	return (
 		<form className="space-y-8" onSubmit={handleSubmit}>
-			<Card>
+			<Card className="shadow-md">
 				<CardHeader>
-					<CardTitle className="text-lg font-medium">
+					<CardTitle className="text-lg font-semibold text-primary">
 						Maklumat Pembayaran
 					</CardTitle>
 					<CardDescription>
@@ -60,11 +64,19 @@ export function PaymentForm() {
 				<CardContent className="space-y-6">
 					<div className="space-y-2">
 						<Label>Tujuan Pembayaran</Label>
-						<Input
-							value="PEMBAYARAN BORANG 1 : BORANG ADUAN GANGGUAN SEKSUAL"
-							readOnly
-							className="bg-muted"
-						/>
+						{type === "borang-1" ? (
+							<Input
+								value="PEMBAYARAN BORANG 1 - BORANG ADUAN GANGGUAN SEKSUAL"
+								readOnly
+								className="bg-muted"
+							/>
+						) : type === "borang-2" ? (
+							<Input
+								value="PEMBAYARAN BORANG 2 - PERNYATAAN PEMBELAAN"
+								readOnly
+								className="bg-muted"
+							/>
+						) : null}
 					</div>
 
 					<div className="space-y-2">

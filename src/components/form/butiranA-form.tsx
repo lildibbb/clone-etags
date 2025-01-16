@@ -1,75 +1,117 @@
-import { Card, CardContent } from "@/components/ui/card";
+import {
+	Card,
+	CardContent,
+	CardDescription,
+	CardHeader,
+	CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
+// Butiran A - Personal Information Form
 export function ComplainantForm() {
 	return (
-		<form className="space-y-8">
-			<div className="space-y-4">
-				<div className="grid gap-4">
-					<div className="space-y-2">
-						<Label htmlFor="name">Nama Pengadu</Label>
-						<Input id="name" required placeholder="Masukkan nama penuh" />
-					</div>
-
-					<div className="space-y-2">
-						<Label htmlFor="occupation">Pekerjaan</Label>
-						<Input id="occupation" placeholder="Masukkan pekerjaan" />
-					</div>
-				</div>
-
-				<Card>
-					<CardContent className="grid gap-4 p-4">
-						<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-							<div className="space-y-2">
-								<Label htmlFor="phone">No. Telefon</Label>
-								<Input id="phone" type="tel" placeholder="01x-xxxxxxx" />
-							</div>
-							<div className="space-y-2">
-								<Label htmlFor="mobile">No. Telefon Bimbit</Label>
-								<Input id="mobile" type="tel" placeholder="01x-xxxxxxx" />
-							</div>
+		<div className="space-y-6">
+			{/* Personal Information */}
+			<Card className="shadow-md">
+				<CardHeader>
+					<CardTitle className="text-lg font-semibold text-primary">
+						Maklumat Peribadi
+					</CardTitle>
+					<CardDescription>
+						Sila isi butiran peribadi anda.{" "}
+						<span className="text-destructive">(*) adalah maklumat wajib.</span>
+					</CardDescription>
+				</CardHeader>
+				<CardContent className="space-y-6">
+					{/* Basic Details Grid */}
+					<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+						<div className="md:col-span-2">
+							<Label htmlFor="name" className="text-sm font-medium">
+								Nama Penuh <span className="text-destructive text-base">*</span>
+							</Label>
+							<Input
+								id="name"
+								className="mt-1.5"
+								placeholder="Masukkan nama penuh anda"
+								required
+							/>
 						</div>
-
-						<div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-							<div className="space-y-2">
-								<Label htmlFor="email">Email</Label>
-								<Input id="email" type="email" placeholder="nama@contoh.com" />
-							</div>
-							<div className="space-y-2">
-								<Label htmlFor="id">No. Kad Pengenalan</Label>
-								<Input id="id" placeholder="xxxxxx-xx-xxxx" />
-							</div>
+						<div>
+							<Label htmlFor="id" className="text-sm font-medium">
+								No. Kad Pengenalan{" "}
+								<span className="text-destructive text-base">*</span>
+							</Label>
+							<Input
+								id="id"
+								className="mt-1.5"
+								placeholder="xxxxxx-xx-xxxx"
+								required
+							/>
 						</div>
-					</CardContent>
-				</Card>
+						<div>
+							<Label htmlFor="email" className="text-sm font-medium">
+								Emel
+							</Label>
+							<Input
+								id="email"
+								className="mt-1.5"
+								type="email"
+								placeholder="nama@contoh.com"
+							/>
+						</div>
+						<div className="md:col-span-2">
+							<Label htmlFor="occupation" className="text-sm font-medium">
+								Pekerjaan
+							</Label>
+							<Input
+								id="occupation"
+								className="mt-1.5"
+								placeholder="Masukkan pekerjaan anda"
+							/>
+						</div>
+					</div>
+				</CardContent>
+			</Card>
 
-				<Card>
-					<CardContent className="space-y-4 p-4">
-						<Label className="text-base font-medium">Alamat Rumah</Label>
-						<div className="space-y-4">
-							<Input placeholder="Alamat Baris 1" />
-							<Input placeholder="Alamat Baris 2" />
+			{/* Address Information */}
+			<Card className="shadow-md">
+				<CardHeader>
+					<CardTitle className="text-lg font-semibold text-primary">
+						Alamat
+					</CardTitle>
+					<CardDescription>Sila isi alamat lengkap anda</CardDescription>
+				</CardHeader>
+				<CardContent className="space-y-6">
+					<div className="space-y-4">
+						{/* Address Lines */}
+						<div>
+							<Input className="mb-3" placeholder="Alamat Baris 1" />
+							<Input className="mb-3" placeholder="Alamat Baris 2" />
 							<Input placeholder="Alamat Baris 3" />
+						</div>
 
-							<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-								<div className="space-y-2">
-									<Label htmlFor="postcode">Poskod</Label>
-									<Input id="postcode" placeholder="00000" />
-								</div>
-								<div className="space-y-2">
-									<Label htmlFor="city">Daerah/Bandar</Label>
-									<Input id="city" placeholder="Masukkan daerah/bandar" />
-								</div>
-								<div className="space-y-2">
-									<Label htmlFor="state">Negeri</Label>
-									<Input id="state" placeholder="Masukkan negeri" />
-								</div>
+						{/* Location Details */}
+						<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+							<div>
+								<Label className="text-sm font-medium">Poskod</Label>
+								<Input className="mt-1.5" placeholder="00000" />
+							</div>
+							<div>
+								<Label className="text-sm font-medium">Daerah/Bandar</Label>
+								<Input
+									className="mt-1.5"
+									placeholder="Masukkan daerah/bandar"
+								/>
+							</div>
+							<div>
+								<Label className="text-sm font-medium">Negeri</Label>
+								<Input className="mt-1.5" placeholder="Masukkan negeri" />
 							</div>
 						</div>
-					</CardContent>
-				</Card>
-			</div>
-		</form>
+					</div>
+				</CardContent>
+			</Card>
+		</div>
 	);
 }

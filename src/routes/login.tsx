@@ -31,13 +31,13 @@ export const Route = createFileRoute("/login")({
 const mockUsers: {
 	[key: number]: { email: string; password: string; role: string };
 } = {
-	1: { email: "pengadu@example.com", password: "user123", role: "pengadu" },
+	1: { email: "pengadu@example.com", password: "pengadu123", role: "pengadu" },
 	2: {
 		email: "responden@example.com",
-		password: "staff123",
+		password: "responden123",
 		role: "responden",
 	},
-	3: { email: "pegawai@example.com", password: "manager123", role: "pegawai" },
+	3: { email: "pegawai@example.com", password: "pegawai123", role: "pegawai" },
 	4: { email: "admin@example.com", password: "admin123", role: "admin" },
 };
 
@@ -71,17 +71,17 @@ function RouteComponent() {
 
 		if (user) {
 			switch (user.role) {
-				case "admin":
-					navigate({ to: "/dashboard/admin" });
-					break;
-				case "pegawai":
-					navigate({ to: "/dashboard/pegawai" });
-					break;
 				case "pengadu":
 					navigate({ to: "/dashboard/pengadu" });
 					break;
 				case "responden":
 					navigate({ to: "/dashboard/responden" });
+					break;
+				case "pegawai":
+					navigate({ to: "/dashboard/pegawai" });
+					break;
+				case "admin":
+					navigate({ to: "/dashboard/admin" });
 					break;
 				default:
 					setError("Invalid role");

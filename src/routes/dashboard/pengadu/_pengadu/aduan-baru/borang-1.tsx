@@ -21,7 +21,7 @@ import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
 import { SidebarInset, SidebarTrigger } from "@/components/ui/sidebar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 
@@ -132,7 +132,7 @@ function RouteComponent() {
 								</TabsContent>
 
 								<TabsContent value="C">
-									<PaymentForm />
+									<PaymentForm type="borang-1" />
 								</TabsContent>
 
 								<div className="flex justify-between mt-6 pt-6 border-t">
