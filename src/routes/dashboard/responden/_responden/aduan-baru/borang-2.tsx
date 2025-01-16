@@ -26,7 +26,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 
 export const Route = createFileRoute(
-	"/dashboard/pengadu/_pengadu/aduan-baru/borang-1",
+	"/dashboard/responden/_responden/aduan-baru/borang-2",
 )({
 	component: RouteComponent,
 });
@@ -72,14 +72,14 @@ function RouteComponent() {
 					<Breadcrumb>
 						<BreadcrumbList>
 							<BreadcrumbItem>
-								<BreadcrumbLink href="/dashboard/pengadu">
-									Dashboard Pengadu
+								<BreadcrumbLink href="/dashboard/responden">
+									Dashboard responden
 								</BreadcrumbLink>
 							</BreadcrumbItem>
 							<BreadcrumbSeparator />
 
 							<BreadcrumbItem>
-								<BreadcrumbPage>Aduan Baru - Borang 1</BreadcrumbPage>
+								<BreadcrumbPage>Aduan Baru - Borang 2</BreadcrumbPage>
 							</BreadcrumbItem>
 						</BreadcrumbList>
 					</Breadcrumb>
@@ -91,7 +91,7 @@ function RouteComponent() {
 				<Card className="border-none shadow-lg">
 					<CardHeader className="text-center border-b bg-card">
 						<CardTitle className="text-2xl font-semibold text-primary">
-							BORANG 1 : ADUAN GANGGUAN SEKSUAL
+							BORANG 1 : PERNYATAAN PEMBELAAN
 						</CardTitle>
 						<CardDescription>
 							Sila lengkapkan semua maklumat yang diperlukan

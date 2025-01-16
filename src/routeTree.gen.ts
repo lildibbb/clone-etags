@@ -25,6 +25,7 @@ import { Route as DashboardAdminAdminIndexImport } from './routes/dashboard/admi
 import { Route as DashboardRespondenRespondenSenaraiAduanImport } from './routes/dashboard/responden/_responden/senarai-aduan'
 import { Route as DashboardPengaduPengaduSenaraiAduanImport } from './routes/dashboard/pengadu/_pengadu/senarai-aduan'
 import { Route as DashboardPegawaiPegawaiSenaraiAduanImport } from './routes/dashboard/pegawai/_pegawai/senarai-aduan'
+import { Route as DashboardRespondenRespondenAduanBaruBorang2Import } from './routes/dashboard/responden/_responden/aduan-baru/borang-2'
 import { Route as DashboardPengaduPengaduAduanBaruBorang1Import } from './routes/dashboard/pengadu/_pengadu/aduan-baru/borang-1'
 import { Route as DashboardPegawaiPegawaiAduanBaruBorang4Import } from './routes/dashboard/pegawai/_pegawai/aduan-baru/borang-4'
 import { Route as DashboardPegawaiPegawaiAduanBaruBorang3Import } from './routes/dashboard/pegawai/_pegawai/aduan-baru/borang-3'
@@ -144,6 +145,13 @@ const DashboardPegawaiPegawaiSenaraiAduanRoute =
     id: '/senarai-aduan',
     path: '/senarai-aduan',
     getParentRoute: () => DashboardPegawaiPegawaiRoute,
+  } as any)
+
+const DashboardRespondenRespondenAduanBaruBorang2Route =
+  DashboardRespondenRespondenAduanBaruBorang2Import.update({
+    id: '/aduan-baru/borang-2',
+    path: '/aduan-baru/borang-2',
+    getParentRoute: () => DashboardRespondenRespondenRoute,
   } as any)
 
 const DashboardPengaduPengaduAduanBaruBorang1Route =
@@ -339,6 +347,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardPengaduPengaduAduanBaruBorang1Import
       parentRoute: typeof DashboardPengaduPengaduImport
     }
+    '/dashboard/responden/_responden/aduan-baru/borang-2': {
+      id: '/dashboard/responden/_responden/aduan-baru/borang-2'
+      path: '/aduan-baru/borang-2'
+      fullPath: '/dashboard/responden/aduan-baru/borang-2'
+      preLoaderRoute: typeof DashboardRespondenRespondenAduanBaruBorang2Import
+      parentRoute: typeof DashboardRespondenRespondenImport
+    }
   }
 }
 
@@ -441,6 +456,7 @@ const DashboardPengaduRouteWithChildren =
 interface DashboardRespondenRespondenRouteChildren {
   DashboardRespondenRespondenSenaraiAduanRoute: typeof DashboardRespondenRespondenSenaraiAduanRoute
   DashboardRespondenRespondenIndexRoute: typeof DashboardRespondenRespondenIndexRoute
+  DashboardRespondenRespondenAduanBaruBorang2Route: typeof DashboardRespondenRespondenAduanBaruBorang2Route
 }
 
 const DashboardRespondenRespondenRouteChildren: DashboardRespondenRespondenRouteChildren =
@@ -449,6 +465,8 @@ const DashboardRespondenRespondenRouteChildren: DashboardRespondenRespondenRoute
       DashboardRespondenRespondenSenaraiAduanRoute,
     DashboardRespondenRespondenIndexRoute:
       DashboardRespondenRespondenIndexRoute,
+    DashboardRespondenRespondenAduanBaruBorang2Route:
+      DashboardRespondenRespondenAduanBaruBorang2Route,
   }
 
 const DashboardRespondenRespondenRouteWithChildren =
@@ -487,6 +505,7 @@ export interface FileRoutesByFullPath {
   '/dashboard/pegawai/aduan-baru/borang-3': typeof DashboardPegawaiPegawaiAduanBaruBorang3Route
   '/dashboard/pegawai/aduan-baru/borang-4': typeof DashboardPegawaiPegawaiAduanBaruBorang4Route
   '/dashboard/pengadu/aduan-baru/borang-1': typeof DashboardPengaduPengaduAduanBaruBorang1Route
+  '/dashboard/responden/aduan-baru/borang-2': typeof DashboardRespondenRespondenAduanBaruBorang2Route
 }
 
 export interface FileRoutesByTo {
@@ -504,6 +523,7 @@ export interface FileRoutesByTo {
   '/dashboard/pegawai/aduan-baru/borang-3': typeof DashboardPegawaiPegawaiAduanBaruBorang3Route
   '/dashboard/pegawai/aduan-baru/borang-4': typeof DashboardPegawaiPegawaiAduanBaruBorang4Route
   '/dashboard/pengadu/aduan-baru/borang-1': typeof DashboardPengaduPengaduAduanBaruBorang1Route
+  '/dashboard/responden/aduan-baru/borang-2': typeof DashboardRespondenRespondenAduanBaruBorang2Route
 }
 
 export interface FileRoutesById {
@@ -530,6 +550,7 @@ export interface FileRoutesById {
   '/dashboard/pegawai/_pegawai/aduan-baru/borang-3': typeof DashboardPegawaiPegawaiAduanBaruBorang3Route
   '/dashboard/pegawai/_pegawai/aduan-baru/borang-4': typeof DashboardPegawaiPegawaiAduanBaruBorang4Route
   '/dashboard/pengadu/_pengadu/aduan-baru/borang-1': typeof DashboardPengaduPengaduAduanBaruBorang1Route
+  '/dashboard/responden/_responden/aduan-baru/borang-2': typeof DashboardRespondenRespondenAduanBaruBorang2Route
 }
 
 export interface FileRouteTypes {
@@ -553,6 +574,7 @@ export interface FileRouteTypes {
     | '/dashboard/pegawai/aduan-baru/borang-3'
     | '/dashboard/pegawai/aduan-baru/borang-4'
     | '/dashboard/pengadu/aduan-baru/borang-1'
+    | '/dashboard/responden/aduan-baru/borang-2'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -569,6 +591,7 @@ export interface FileRouteTypes {
     | '/dashboard/pegawai/aduan-baru/borang-3'
     | '/dashboard/pegawai/aduan-baru/borang-4'
     | '/dashboard/pengadu/aduan-baru/borang-1'
+    | '/dashboard/responden/aduan-baru/borang-2'
   id:
     | '__root__'
     | '/'
@@ -593,6 +616,7 @@ export interface FileRouteTypes {
     | '/dashboard/pegawai/_pegawai/aduan-baru/borang-3'
     | '/dashboard/pegawai/_pegawai/aduan-baru/borang-4'
     | '/dashboard/pengadu/_pengadu/aduan-baru/borang-1'
+    | '/dashboard/responden/_responden/aduan-baru/borang-2'
   fileRoutesById: FileRoutesById
 }
 
@@ -695,7 +719,8 @@ export const routeTree = rootRoute
       "parent": "/dashboard/responden",
       "children": [
         "/dashboard/responden/_responden/senarai-aduan",
-        "/dashboard/responden/_responden/"
+        "/dashboard/responden/_responden/",
+        "/dashboard/responden/_responden/aduan-baru/borang-2"
       ]
     },
     "/dashboard/pegawai/_pegawai/senarai-aduan": {
@@ -745,6 +770,10 @@ export const routeTree = rootRoute
     "/dashboard/pengadu/_pengadu/aduan-baru/borang-1": {
       "filePath": "dashboard/pengadu/_pengadu/aduan-baru/borang-1.tsx",
       "parent": "/dashboard/pengadu/_pengadu"
+    },
+    "/dashboard/responden/_responden/aduan-baru/borang-2": {
+      "filePath": "dashboard/responden/_responden/aduan-baru/borang-2.tsx",
+      "parent": "/dashboard/responden/_responden"
     }
   }
 }
