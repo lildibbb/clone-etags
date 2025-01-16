@@ -25,7 +25,7 @@ const navSections = {
 			items: [
 				{
 					title: "Dashboard",
-					url: "/dashboard/home",
+					url: "/dashboard/admin",
 					icon: Home,
 				},
 			],
@@ -50,8 +50,8 @@ const navSections = {
 					],
 				},
 				{
-					title: "Settings",
-					url: "/dashboard/admin/settings",
+					title: "Pengurusan Sistem",
+					url: "/dashboard/admin/pengurusan-sistem",
 					icon: Settings,
 				},
 			],
