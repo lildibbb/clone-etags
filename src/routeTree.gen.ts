@@ -25,6 +25,7 @@ import { Route as DashboardAdminAdminIndexImport } from './routes/dashboard/admi
 import { Route as DashboardRespondenRespondenSenaraiAduanImport } from './routes/dashboard/responden/_responden/senarai-aduan'
 import { Route as DashboardPengaduPengaduSenaraiAduanImport } from './routes/dashboard/pengadu/_pengadu/senarai-aduan'
 import { Route as DashboardPegawaiPegawaiSenaraiAduanImport } from './routes/dashboard/pegawai/_pegawai/senarai-aduan'
+import { Route as DashboardAdminAdminPengurusanSistemImport } from './routes/dashboard/admin/_admin/pengurusan-sistem'
 import { Route as DashboardRespondenRespondenAduanBaruBorang2Import } from './routes/dashboard/responden/_responden/aduan-baru/borang-2'
 import { Route as DashboardPengaduPengaduAduanBaruBorang1Import } from './routes/dashboard/pengadu/_pengadu/aduan-baru/borang-1'
 import { Route as DashboardPegawaiPegawaiAduanBaruBorang4Import } from './routes/dashboard/pegawai/_pegawai/aduan-baru/borang-4'
@@ -147,6 +148,13 @@ const DashboardPegawaiPegawaiSenaraiAduanRoute =
     getParentRoute: () => DashboardPegawaiPegawaiRoute,
   } as any)
 
+const DashboardAdminAdminPengurusanSistemRoute =
+  DashboardAdminAdminPengurusanSistemImport.update({
+    id: '/pengurusan-sistem',
+    path: '/pengurusan-sistem',
+    getParentRoute: () => DashboardAdminAdminRoute,
+  } as any)
+
 const DashboardRespondenRespondenAduanBaruBorang2Route =
   DashboardRespondenRespondenAduanBaruBorang2Import.update({
     id: '/aduan-baru/borang-2',
@@ -263,6 +271,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardRespondenRespondenImport
       parentRoute: typeof DashboardRespondenRoute
     }
+    '/dashboard/admin/_admin/pengurusan-sistem': {
+      id: '/dashboard/admin/_admin/pengurusan-sistem'
+      path: '/pengurusan-sistem'
+      fullPath: '/dashboard/admin/pengurusan-sistem'
+      preLoaderRoute: typeof DashboardAdminAdminPengurusanSistemImport
+      parentRoute: typeof DashboardAdminAdminImport
+    }
     '/dashboard/pegawai/_pegawai/senarai-aduan': {
       id: '/dashboard/pegawai/_pegawai/senarai-aduan'
       path: '/senarai-aduan'
@@ -360,12 +375,15 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 interface DashboardAdminAdminRouteChildren {
+  DashboardAdminAdminPengurusanSistemRoute: typeof DashboardAdminAdminPengurusanSistemRoute
   DashboardAdminAdminIndexRoute: typeof DashboardAdminAdminIndexRoute
   DashboardAdminAdminManageExternalUsersRoute: typeof DashboardAdminAdminManageExternalUsersRoute
   DashboardAdminAdminManageInternalUsersRoute: typeof DashboardAdminAdminManageInternalUsersRoute
 }
 
 const DashboardAdminAdminRouteChildren: DashboardAdminAdminRouteChildren = {
+  DashboardAdminAdminPengurusanSistemRoute:
+    DashboardAdminAdminPengurusanSistemRoute,
   DashboardAdminAdminIndexRoute: DashboardAdminAdminIndexRoute,
   DashboardAdminAdminManageExternalUsersRoute:
     DashboardAdminAdminManageExternalUsersRoute,
@@ -493,6 +511,7 @@ export interface FileRoutesByFullPath {
   '/dashboard/pegawai': typeof DashboardPegawaiPegawaiRouteWithChildren
   '/dashboard/pengadu': typeof DashboardPengaduPengaduRouteWithChildren
   '/dashboard/responden': typeof DashboardRespondenRespondenRouteWithChildren
+  '/dashboard/admin/pengurusan-sistem': typeof DashboardAdminAdminPengurusanSistemRoute
   '/dashboard/pegawai/senarai-aduan': typeof DashboardPegawaiPegawaiSenaraiAduanRoute
   '/dashboard/pengadu/senarai-aduan': typeof DashboardPengaduPengaduSenaraiAduanRoute
   '/dashboard/responden/senarai-aduan': typeof DashboardRespondenRespondenSenaraiAduanRoute
@@ -515,6 +534,7 @@ export interface FileRoutesByTo {
   '/dashboard/pegawai': typeof DashboardPegawaiPegawaiIndexRoute
   '/dashboard/pengadu': typeof DashboardPengaduPengaduIndexRoute
   '/dashboard/responden': typeof DashboardRespondenRespondenIndexRoute
+  '/dashboard/admin/pengurusan-sistem': typeof DashboardAdminAdminPengurusanSistemRoute
   '/dashboard/pegawai/senarai-aduan': typeof DashboardPegawaiPegawaiSenaraiAduanRoute
   '/dashboard/pengadu/senarai-aduan': typeof DashboardPengaduPengaduSenaraiAduanRoute
   '/dashboard/responden/senarai-aduan': typeof DashboardRespondenRespondenSenaraiAduanRoute
@@ -538,6 +558,7 @@ export interface FileRoutesById {
   '/dashboard/pengadu/_pengadu': typeof DashboardPengaduPengaduRouteWithChildren
   '/dashboard/responden': typeof DashboardRespondenRouteWithChildren
   '/dashboard/responden/_responden': typeof DashboardRespondenRespondenRouteWithChildren
+  '/dashboard/admin/_admin/pengurusan-sistem': typeof DashboardAdminAdminPengurusanSistemRoute
   '/dashboard/pegawai/_pegawai/senarai-aduan': typeof DashboardPegawaiPegawaiSenaraiAduanRoute
   '/dashboard/pengadu/_pengadu/senarai-aduan': typeof DashboardPengaduPengaduSenaraiAduanRoute
   '/dashboard/responden/_responden/senarai-aduan': typeof DashboardRespondenRespondenSenaraiAduanRoute
@@ -562,6 +583,7 @@ export interface FileRouteTypes {
     | '/dashboard/pegawai'
     | '/dashboard/pengadu'
     | '/dashboard/responden'
+    | '/dashboard/admin/pengurusan-sistem'
     | '/dashboard/pegawai/senarai-aduan'
     | '/dashboard/pengadu/senarai-aduan'
     | '/dashboard/responden/senarai-aduan'
@@ -583,6 +605,7 @@ export interface FileRouteTypes {
     | '/dashboard/pegawai'
     | '/dashboard/pengadu'
     | '/dashboard/responden'
+    | '/dashboard/admin/pengurusan-sistem'
     | '/dashboard/pegawai/senarai-aduan'
     | '/dashboard/pengadu/senarai-aduan'
     | '/dashboard/responden/senarai-aduan'
@@ -604,6 +627,7 @@ export interface FileRouteTypes {
     | '/dashboard/pengadu/_pengadu'
     | '/dashboard/responden'
     | '/dashboard/responden/_responden'
+    | '/dashboard/admin/_admin/pengurusan-sistem'
     | '/dashboard/pegawai/_pegawai/senarai-aduan'
     | '/dashboard/pengadu/_pengadu/senarai-aduan'
     | '/dashboard/responden/_responden/senarai-aduan'
@@ -672,6 +696,7 @@ export const routeTree = rootRoute
       "filePath": "dashboard/admin/_admin.tsx",
       "parent": "/dashboard/admin",
       "children": [
+        "/dashboard/admin/_admin/pengurusan-sistem",
         "/dashboard/admin/_admin/",
         "/dashboard/admin/_admin/manage/external-users",
         "/dashboard/admin/_admin/manage/internal-users"
@@ -722,6 +747,10 @@ export const routeTree = rootRoute
         "/dashboard/responden/_responden/",
         "/dashboard/responden/_responden/aduan-baru/borang-2"
       ]
+    },
+    "/dashboard/admin/_admin/pengurusan-sistem": {
+      "filePath": "dashboard/admin/_admin/pengurusan-sistem.tsx",
+      "parent": "/dashboard/admin/_admin"
     },
     "/dashboard/pegawai/_pegawai/senarai-aduan": {
       "filePath": "dashboard/pegawai/_pegawai/senarai-aduan.tsx",

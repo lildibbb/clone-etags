@@ -1,8 +1,6 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
 import {
 	Table,
@@ -14,299 +12,330 @@ import {
 } from "@/components/ui/table";
 import { createFileRoute } from "@tanstack/react-router";
 import {
+	Activity,
 	AlertCircle,
-	Battery,
+	BarChart3,
 	CheckCircle,
 	Clock,
-	Cpu,
-	Database,
-	HardDrive,
-	Mail,
-	MemoryStickIcon as Memory,
-	MonitorDot,
-	Ticket,
+	HelpCircle,
+	MessageSquare,
+	MonitorSmartphone,
+	Users2,
 } from "lucide-react";
+import {
+	Area,
+	AreaChart,
+	Line,
+	LineChart,
+	ResponsiveContainer,
+} from "recharts";
+
+// Data untuk carta
+const dataPengguna = [
+	{ bulan: "Jan", jumlah: 1200 },
+	{ bulan: "Feb", jumlah: 1400 },
+	{ bulan: "Mac", jumlah: 1800 },
+	{ bulan: "Apr", jumlah: 2400 },
+	{ bulan: "Mei", jumlah: 2800 },
+	{ bulan: "Jun", jumlah: 3200 },
+];
+
+const dataAktiviti = [
+	{ bulan: "Jan", nilai: 400 },
+	{ bulan: "Feb", nilai: 300 },
+	{ bulan: "Mac", nilai: 200 },
+	{ bulan: "Apr", nilai: 500 },
+	{ bulan: "Mei", nilai: 350 },
+	{ bulan: "Jun", nilai: 600 },
+];
+
+const aktivitiTerkini = [
+	{
+		id: 1,
+		pengguna: "Ahmad Faiz",
+		tindakan: "Akaun pengguna baharu dicipta",
+		masa: "2 minit yang lalu",
+		jenis: "success",
+	},
+	{
+		id: 2,
+		pengguna: "Nur Aisyah",
+		tindakan: "Mengemaskini tetapan sistem",
+		masa: "5 minit yang lalu",
+		jenis: "warning",
+	},
+	{
+		id: 3,
+		pengguna: "Mohd Hafiz",
+		tindakan: "Menjana laporan bulanan",
+		masa: "10 minit yang lalu",
+		jenis: "info",
+	},
+	{
+		id: 4,
+		pengguna: "Siti Aminah",
+		tindakan: "Meminta reset kata laluan",
+		masa: "15 minit yang lalu",
+		jenis: "warning",
+	},
+];
 
 export const Route = createFileRoute("/dashboard/admin/_admin/")({
 	component: RouteComponent,
 });
-export const resources = [
-	{
-		name: "Memory",
-		type: "RAM",
-		usage: 45,
-		icon: <Memory className="w-5 h-5" />,
-	},
-	{
-		name: "Storage",
-		type: "Database",
-		usage: 68,
-		icon: <HardDrive className="w-5 h-5" />,
-	},
-	{
-		name: "Database",
-		type: "SQL",
-		usage: 52,
-		icon: <Database className="w-5 h-5" />,
-	},
-	{
-		name: "CPU",
-		type: "Processor",
-		usage: 78,
-		icon: <Cpu className="w-5 h-5" />,
-	},
-	{
-		name: "RAM",
-		type: "Memory",
-		usage: 32,
-		icon: <Memory className="w-5 h-5" />,
-	},
-	{
-		name: "CPU",
-		type: "Graphics",
-		usage: 48,
-		icon: <MonitorDot className="w-5 h-5" />,
-	},
-	{
-		name: "Battery",
-		type: "Power",
-		usage: 89,
-		icon: <Battery className="w-5 h-5" />,
-	},
-];
+
 function RouteComponent() {
 	return (
 		<div className="flex flex-col h-screen">
 			<main className="flex-1 p-4 sm:p-6 lg:p-8 overflow-auto">
-				{/* Adjusted Grid Layout */}
-				<div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-					{/* Welcome Card */}
-					<Card className="md:col-span-2 lg:col-span-3 bg-purple-500 text-white">
-						<CardContent className="flex items-center justify-between p-6">
-							<div>
-								<h2 className="text-2xl font-bold">Welcome back,</h2>
-								<h3 className="text-3xl font-bold mb-2">Admin</h3>
-								<p className="text-sm opacity-90">
-									Last login 14 June 2023 (4pm)
-								</p>
-							</div>
-						</CardContent>
-					</Card>
-
-					{/* Admin Profile Card */}
-					<Card>
-						<CardContent className="pt-6">
-							<div className="flex flex-col items-center mb-6">
-								<Avatar className="w-16 h-16 mb-2 bg-gray-100">
-									<AvatarFallback>CN</AvatarFallback>
-								</Avatar>
-								<h3 className="text-xl font-semibold">Admin</h3>
-								<span className="px-3 py-1 text-xs bg-green-100 text-green-600 rounded-full">
-									Superadmin
-								</span>
-							</div>
-							<div className="space-y-4">
-								<div>
-									<Label
-										htmlFor="username"
-										className="text-sm text-muted-foreground"
-									>
-										Username:
-									</Label>
-									<Input id="username" defaultValue="Admin" className="mt-1" />
-								</div>
-								<div>
-									<Label
-										htmlFor="email"
-										className="text-sm text-muted-foreground"
-									>
-										Email
-									</Label>
-									<Input
-										id="email"
-										defaultValue="superadmin@yopmail.com"
-										className="mt-1"
-									/>
-								</div>
-								<div className="flex gap-3">
-									<Button className="flex-1 bg-purple-500 hover:bg-purple-600">
-										Update
-									</Button>
-									<Button variant="destructive" className="flex-1">
-										Suspend Account
-									</Button>
-								</div>
-							</div>
-						</CardContent>
-					</Card>
-
-					{/* Helpdesk Tracker Card */}
-					<Card>
-						<CardHeader>
-							<CardTitle>Helpdesk Tracker</CardTitle>
-							<p className="text-sm text-muted-foreground">Last 7 Days</p>
-						</CardHeader>
-						<CardContent>
-							<div className="text-center mb-4">
-								<span className="text-5xl font-bold">163</span>
-								<p className="text-sm text-muted-foreground">Tickets</p>
-							</div>
-							<div className="relative flex items-center justify-center my-8">
-								<div className="relative w-40 h-40">
-									<svg className="w-full h-full" viewBox="0 0 100 100">
-										<circle
-											className="text-purple-100"
-											strokeWidth="8"
-											stroke="currentColor"
-											fill="transparent"
-											r="40"
-											cx="50"
-											cy="50"
-										/>
-										<circle
-											className="text-purple-500"
-											strokeWidth="8"
-											strokeDasharray={`${83 * 2.51} ${100 * 2.51}`}
-											strokeLinecap="round"
-											stroke="currentColor"
-											fill="transparent"
-											r="40"
-											cx="50"
-											cy="50"
-										/>
-									</svg>
-									<div className="absolute inset-0 flex items-center justify-center">
-										<div className="text-center">
-											<span className="text-2xl font-bold">83%</span>
-											<p className="text-xs text-muted-foreground">
-												Completed Tickets
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div className="grid grid-cols-3 gap-4 text-center">
-								<div className="space-y-1">
-									<Ticket className="w-8 h-8 mx-auto text-purple-500" />
-									<p className="text-2xl font-bold">29</p>
-									<p className="text-xs text-muted-foreground">New Tickets</p>
-								</div>
-								<div className="space-y-1">
-									<CheckCircle className="w-8 h-8 mx-auto text-green-500" />
-									<p className="text-2xl font-bold">63</p>
-									<p className="text-xs text-muted-foreground">Open Tickets</p>
-								</div>
-								<div className="space-y-1">
-									<Clock className="w-8 h-8 mx-auto text-orange-500" />
-									<p className="text-2xl font-bold">1d</p>
-									<p className="text-xs text-muted-foreground">Response Time</p>
-								</div>
-							</div>
-						</CardContent>
-					</Card>
-					<Card>
-						<CardHeader>
-							<CardTitle>SMTP Server Overview</CardTitle>
-							<p className="text-sm text-muted-foreground">
-								Email Delivery Statistics
+				<div className="flex flex-col gap-6">
+					{/* Kad Header */}
+					<Card className="relative overflow-hidden">
+						<div className="bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 p-6 text-white">
+							<h1 className="text-2xl font-semibold">Selamat Datang, Admin</h1>
+							<h2 className="text-3xl font-bold mb-2">Aliff Ikmal</h2>
+							<p className="text-sm opacity-90">
+								Log masuk terakhir: 14 Januari 2025 (12:40 PM)
 							</p>
-						</CardHeader>
-						<CardContent>
-							<div className="text-center mb-4">
-								<span className="text-5xl font-bold">12,345</span>
-								<p className="text-sm text-muted-foreground">Emails Sent</p>
-							</div>
-							<div className="relative flex items-center justify-center my-8">
-								<div className="relative w-40 h-40">
-									<svg className="w-full h-full" viewBox="0 0 100 100">
-										<circle
-											className="text-gray-100"
-											strokeWidth="8"
-											stroke="currentColor"
-											fill="transparent"
-											r="40"
-											cx="50"
-											cy="50"
-										/>
-										<circle
-											className="text-blue-500"
-											strokeWidth="8"
-											strokeDasharray={`${92 * 2.51} ${100 * 2.51}`}
-											strokeLinecap="round"
-											stroke="currentColor"
-											fill="transparent"
-											r="40"
-											cx="50"
-											cy="50"
-										/>
-									</svg>
-									<div className="absolute inset-0 flex items-center justify-center">
-										<div className="text-center">
-											<span className="text-2xl font-bold">92%</span>
-											<p className="text-xs text-muted-foreground">
-												Delivery Success Rate
-											</p>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div className="grid grid-cols-3 gap-4 text-center">
-								<div className="space-y-1">
-									<Mail className="w-8 h-8 mx-auto text-green-500" />
-									<p className="text-2xl font-bold">10,345</p>
-									<p className="text-xs text-muted-foreground">Delivered</p>
-								</div>
-								<div className="space-y-1">
-									<AlertCircle className="w-8 h-8 mx-auto text-red-500" />
-									<p className="text-2xl font-bold">1,234</p>
-									<p className="text-xs text-muted-foreground">Bounced</p>
-								</div>
-								<div className="space-y-1">
-									<Clock className="w-8 h-8 mx-auto text-orange-500" />
-									<p className="text-2xl font-bold">2s</p>
-									<p className="text-xs text-muted-foreground">
-										Avg Response Time
-									</p>
-								</div>
-							</div>
-						</CardContent>
+						</div>
 					</Card>
 
-					{/* System Resources Card */}
-					<Card className="md:col-span-2 lg:col-span-3">
+					{/* Statistik Ringkas */}
+					<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+						<Card>
+							<CardHeader className="flex flex-row items-center justify-between pb-2">
+								<CardTitle className="text-sm font-medium">
+									Jumlah Pengguna
+								</CardTitle>
+								<Users2 className="h-4 w-4 text-muted-foreground" />
+							</CardHeader>
+							<CardContent>
+								<div className="text-2xl font-bold">3,247</div>
+								<p className="text-xs text-muted-foreground">
+									+180 dari bulan lepas
+								</p>
+								<div className="mt-4 h-[60px]">
+									<ResponsiveContainer width="100%" height="100%">
+										<LineChart data={dataPengguna}>
+											<Line
+												type="monotone"
+												dataKey="jumlah"
+												stroke="#8884d8"
+												strokeWidth={2}
+											/>
+										</LineChart>
+									</ResponsiveContainer>
+								</div>
+							</CardContent>
+						</Card>
+
+						<Card>
+							<CardHeader className="flex flex-row items-center justify-between pb-2">
+								<CardTitle className="text-sm font-medium">Kes Aktif</CardTitle>
+								<Activity className="h-4 w-4 text-muted-foreground" />
+							</CardHeader>
+							<CardContent>
+								<div className="text-2xl font-bold">98</div>
+								<p className="text-xs text-muted-foreground">
+									+12 kes baharu hari ini
+								</p>
+								<div className="mt-4 h-[60px]">
+									<ResponsiveContainer width="100%" height="100%">
+										<AreaChart data={dataAktiviti}>
+											<Area
+												type="monotone"
+												dataKey="nilai"
+												stroke="#8884d8"
+												fill="#8884d8"
+											/>
+										</AreaChart>
+									</ResponsiveContainer>
+								</div>
+							</CardContent>
+						</Card>
+
+						<Card>
+							<CardHeader className="flex flex-row items-center justify-between pb-2">
+								<CardTitle className="text-sm font-medium">
+									Prestasi Sistem
+								</CardTitle>
+								<MonitorSmartphone className="h-4 w-4 text-muted-foreground" />
+							</CardHeader>
+							<CardContent>
+								<div className="text-2xl font-bold">98.2%</div>
+								<p className="text-xs text-muted-foreground">
+									Semua sistem beroperasi
+								</p>
+								<Progress value={98} className="mt-4" />
+							</CardContent>
+						</Card>
+
+						<Card>
+							<CardHeader className="flex flex-row items-center justify-between pb-2">
+								<CardTitle className="text-sm font-medium">
+									Tiket Sokongan
+								</CardTitle>
+								<MessageSquare className="h-4 w-4 text-muted-foreground" />
+							</CardHeader>
+							<CardContent>
+								<div className="text-2xl font-bold">12</div>
+								<p className="text-xs text-muted-foreground">
+									4 memerlukan perhatian
+								</p>
+								<div className="mt-4 flex gap-2">
+									<div className="flex items-center gap-1">
+										<div className="h-2 w-2 rounded-full bg-green-500" />
+										<span className="text-xs">Terbuka</span>
+									</div>
+									<div className="flex items-center gap-1">
+										<div className="h-2 w-2 rounded-full bg-yellow-500" />
+										<span className="text-xs">Menunggu</span>
+									</div>
+									<div className="flex items-center gap-1">
+										<div className="h-2 w-2 rounded-full bg-red-500" />
+										<span className="text-xs">Segera</span>
+									</div>
+								</div>
+							</CardContent>
+						</Card>
+					</div>
+
+					{/* Sumber Sistem */}
+					<div className="grid gap-4 md:grid-cols-2">
+						<Card>
+							<CardHeader>
+								<CardTitle>Penggunaan Sumber</CardTitle>
+							</CardHeader>
+							<CardContent>
+								<div className="space-y-4">
+									<div className="grid gap-2">
+										<div className="flex items-center justify-between">
+											<div className="flex items-center gap-2">
+												<MonitorSmartphone className="h-4 w-4" />
+												<span>Penggunaan CPU</span>
+											</div>
+											<span className="text-sm">78%</span>
+										</div>
+										<Progress value={78} />
+									</div>
+									<div className="grid gap-2">
+										<div className="flex items-center justify-between">
+											<div className="flex items-center gap-2">
+												<Activity className="h-4 w-4" />
+												<span>Penggunaan Memori</span>
+											</div>
+											<span className="text-sm">64%</span>
+										</div>
+										<Progress value={64} />
+									</div>
+									<div className="grid gap-2">
+										<div className="flex items-center justify-between">
+											<div className="flex items-center gap-2">
+												<BarChart3 className="h-4 w-4" />
+												<span>Penggunaan Storan</span>
+											</div>
+											<span className="text-sm">42%</span>
+										</div>
+										<Progress value={42} />
+									</div>
+								</div>
+							</CardContent>
+						</Card>
+
+						{/* Aktiviti Terkini */}
+						<Card>
+							<CardHeader>
+								<CardTitle>Aktiviti Terkini</CardTitle>
+							</CardHeader>
+							<CardContent>
+								<div className="space-y-4">
+									{aktivitiTerkini.map((aktiviti) => (
+										<div
+											key={aktiviti.id}
+											className="flex items-center gap-4 rounded-lg border p-3"
+										>
+											<Avatar className="h-9 w-9">
+												<AvatarFallback>
+													{aktiviti.pengguna
+														.split(" ")
+														.map((n) => n[0])
+														.join("")}
+												</AvatarFallback>
+											</Avatar>
+											<div className="flex-1 space-y-1">
+												<p className="text-sm font-medium">
+													{aktiviti.tindakan}
+												</p>
+												<p className="text-xs text-muted-foreground">
+													oleh {aktiviti.pengguna}
+												</p>
+											</div>
+											<div className="flex items-center gap-2">
+												<Clock className="h-4 w-4 text-muted-foreground" />
+												<span className="text-xs text-muted-foreground">
+													{aktiviti.masa}
+												</span>
+											</div>
+										</div>
+									))}
+								</div>
+							</CardContent>
+						</Card>
+					</div>
+
+					{/* Status Sistem */}
+					<Card>
 						<CardHeader>
-							<CardTitle>System Resources</CardTitle>
+							<CardTitle>Status Sistem</CardTitle>
 						</CardHeader>
 						<CardContent>
-							<Table>
-								<TableHeader>
-									<TableRow>
-										<TableHead>NAME</TableHead>
-										<TableHead>TYPE</TableHead>
-										<TableHead>USAGE</TableHead>
-										<TableHead>UPDATED AT</TableHead>
-									</TableRow>
-								</TableHeader>
-								<TableBody>
-									{resources.map((resource, i) => (
-										<TableRow key={i}>
-											<TableCell>
-												<div className="flex items-center gap-2">
-													{resource.icon}
-													{resource.name}
-												</div>
-											</TableCell>
-											<TableCell>{resource.type}</TableCell>
-											<TableCell>
-												<Progress value={resource.usage} className="h-2" />
-											</TableCell>
-											<TableCell className="text-muted-foreground">
-												10, Jan 2021 20:07
-											</TableCell>
-										</TableRow>
-									))}
-								</TableBody>
-							</Table>
+							<div className="space-y-4">
+								<div className="flex items-center gap-4 rounded-lg border border-green-200 bg-green-50 p-3">
+									<CheckCircle className="h-5 w-5 text-green-600" />
+									<div className="flex-1">
+										<p className="font-medium text-green-900">
+											Kemaskini Sistem Berjaya
+										</p>
+										<p className="text-sm text-green-700">
+											Semua komponen sistem telah dikemaskini ke versi terkini
+										</p>
+									</div>
+									<Button variant="outline" size="sm">
+										Lihat Butiran
+									</Button>
+								</div>
+
+								<div className="flex items-center gap-4 rounded-lg border border-yellow-200 bg-yellow-50 p-3">
+									<HelpCircle className="h-5 w-5 text-yellow-600" />
+									<div className="flex-1">
+										<p className="font-medium text-yellow-900">
+											Peringatan Sandaran
+										</p>
+										<p className="text-sm text-yellow-700">
+											Sandaran sistem mingguan dijadualkan untuk malam ini pada
+											jam 2:00 pagi
+										</p>
+									</div>
+									<Button variant="outline" size="sm">
+										Konfigurasi
+									</Button>
+								</div>
+
+								<div className="flex items-center gap-4 rounded-lg border border-red-200 bg-red-50 p-3">
+									<AlertCircle className="h-5 w-5 text-red-600" />
+									<div className="flex-1">
+										<p className="font-medium text-red-900">
+											Amaran Ruang Storan
+										</p>
+										<p className="text-sm text-red-700">
+											Cakera storan utama hampir mencapai 80% kapasiti
+										</p>
+									</div>
+									<Button variant="outline" size="sm">
+										Ambil Tindakan
+									</Button>
+								</div>
+							</div>
 						</CardContent>
 					</Card>
 				</div>
