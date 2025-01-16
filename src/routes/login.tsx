@@ -31,14 +31,14 @@ export const Route = createFileRoute("/login")({
 const mockUsers: {
 	[key: number]: { email: string; password: string; role: string };
 } = {
-	1: { email: "admin@example.com", password: "admin123", role: "admin" },
-	2: { email: "pegawai@example.com", password: "manager123", role: "pegawai" },
-	3: {
+	1: { email: "pengadu@example.com", password: "user123", role: "pengadu" },
+	2: {
 		email: "responden@example.com",
 		password: "staff123",
 		role: "responden",
 	},
-	4: { email: "pengadu@example.com", password: "user123", role: "pengadu" },
+	3: { email: "pegawai@example.com", password: "manager123", role: "pegawai" },
+	4: { email: "admin@example.com", password: "admin123", role: "admin" },
 };
 
 function RouteComponent() {
