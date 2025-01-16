@@ -84,8 +84,8 @@ function RouteComponent() {
 				</div>
 			</header>
 
-			<div className="flex-1">
-				<div className="container mx-auto max-w-4xl">
+			<div className="flex flex-col min-h-screen bg-gray-100">
+				<main className="flex-1 p-4 sm:p-6 lg:p-8">
 					<Card>
 						<CardHeader className="space-y-1">
 							<CardTitle className="text-2xl">
@@ -158,7 +158,7 @@ function RouteComponent() {
 							</form>
 						</CardContent>
 					</Card>
-				</div>
+				</main>
 			</div>
 		</SidebarInset>
 	);
