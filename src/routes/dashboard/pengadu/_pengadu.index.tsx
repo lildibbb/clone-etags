@@ -1,5 +1,5 @@
-import { Card } from "@/components/ui/card";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Card } from '@/components/ui/card'
+import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import {
   Table,
   TableBody,
@@ -7,7 +7,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
+} from '@/components/ui/table'
 import {
   Eye,
   MessageSquare,
@@ -16,115 +16,115 @@ import {
   Archive,
   MapPin,
   Clock,
-} from "lucide-react";
-import { createFileRoute } from "@tanstack/react-router";
+} from 'lucide-react'
+import { createFileRoute } from '@tanstack/react-router'
 
-export const Route = createFileRoute("/dashboard/pengadu/_pengadu/home")({
+export const Route = createFileRoute('/dashboard/pengadu/_pengadu/')({
   component: RouteComponent,
-});
+})
 
 interface StatusData {
-  id: string;
-  caseNumber: string;
-  location: string;
-  type: string;
-  date: string;
-  status: string;
-  icon: React.ReactNode; // Add icon property
+  id: string
+  caseNumber: string
+  location: string
+  type: string
+  date: string
+  status: string
+  icon: React.ReactNode // Add icon property
 }
 
 const statusData: StatusData[] = [
   {
-    id: "1",
-    caseNumber: "AGS-2024-000001",
-    location: "Selangor",
-    type: "Gangguan Verbal",
-    date: "23-November-2024",
-    status: "Selesai Notis Pendengaran",
+    id: '1',
+    caseNumber: 'AGS-2024-000001',
+    location: 'Selangor',
+    type: 'Gangguan Verbal',
+    date: '23-November-2024',
+    status: 'Selesai Notis Pendengaran',
     icon: <CheckSquare className="w-4 h-4 text-green-500" />, // Icon for completed
   },
   {
-    id: "2",
-    caseNumber: "AGS-2024-000002",
-    location: "W.P Kuala Lumpur",
-    type: "Gangguan Fizikal",
-    date: "26-November-2024",
-    status: "Draf-Aduan Gangguan Seksual",
+    id: '2',
+    caseNumber: 'AGS-2024-000002',
+    location: 'W.P Kuala Lumpur',
+    type: 'Gangguan Fizikal',
+    date: '26-November-2024',
+    status: 'Draf-Aduan Gangguan Seksual',
     icon: <Archive className="w-4 h-4 text-orange-500" />, // Icon for draft
   },
   {
-    id: "3",
-    caseNumber: "AGS-2024-000003",
-    location: "Perak",
-    type: "Gangguan Seksual",
-    date: "28-November-2024",
-    status: "Selesai Notis Pendengaran",
+    id: '3',
+    caseNumber: 'AGS-2024-000003',
+    location: 'Perak',
+    type: 'Gangguan Seksual',
+    date: '28-November-2024',
+    status: 'Selesai Notis Pendengaran',
     icon: <CheckSquare className="w-4 h-4 text-green-500" />, // Icon for completed
   },
   {
-    id: "4",
-    caseNumber: "AGS-2024-000004",
-    location: "Johor",
-    type: "Gangguan Siber",
-    date: "2-Januari-2025",
-    status: "Draf-Aduan Gangguan Seksual",
+    id: '4',
+    caseNumber: 'AGS-2024-000004',
+    location: 'Johor',
+    type: 'Gangguan Siber',
+    date: '2-Januari-2025',
+    status: 'Draf-Aduan Gangguan Seksual',
     icon: <Archive className="w-4 h-4 text-orange-500" />, // Icon for draft
   },
   {
-    id: "5",
-    caseNumber: "AGS-2024-000005",
-    location: "Pulau Pinang",
-    type: "Gangguan Verbal",
-    date: "10-Januari-2025",
-    status: "Selesai Notis Pendengaran",
+    id: '5',
+    caseNumber: 'AGS-2024-000005',
+    location: 'Pulau Pinang',
+    type: 'Gangguan Verbal',
+    date: '10-Januari-2025',
+    status: 'Selesai Notis Pendengaran',
     icon: <CheckSquare className="w-4 h-4 text-green-500" />, // Icon for completed
   },
   {
-    id: "6",
-    caseNumber: "AGS-2024-000006",
-    location: "Sabah",
-    type: "Gangguan Fizikal",
-    date: "15-Januari-2025",
-    status: "Draf-Aduan Gangguan Seksual",
+    id: '6',
+    caseNumber: 'AGS-2024-000006',
+    location: 'Sabah',
+    type: 'Gangguan Fizikal',
+    date: '15-Januari-2025',
+    status: 'Draf-Aduan Gangguan Seksual',
     icon: <Archive className="w-4 h-4 text-orange-500" />, // Icon for draft
   },
   {
-    id: "7",
-    caseNumber: "AGS-2024-000007",
-    location: "Sarawak",
-    type: "Gangguan Seksual",
-    date: "20-Januari-2025",
-    status: "Selesai Notis Pendengaran",
+    id: '7',
+    caseNumber: 'AGS-2024-000007',
+    location: 'Sarawak',
+    type: 'Gangguan Seksual',
+    date: '20-Januari-2025',
+    status: 'Selesai Notis Pendengaran',
     icon: <CheckSquare className="w-4 h-4 text-green-500" />, // Icon for completed
   },
   {
-    id: "8",
-    caseNumber: "AGS-2024-000008",
-    location: "Kedah",
-    type: "Gangguan Siber",
-    date: "25-Januari-2025",
-    status: "Draf-Aduan Gangguan Seksual",
+    id: '8',
+    caseNumber: 'AGS-2024-000008',
+    location: 'Kedah',
+    type: 'Gangguan Siber',
+    date: '25-Januari-2025',
+    status: 'Draf-Aduan Gangguan Seksual',
     icon: <Archive className="w-4 h-4 text-orange-500" />, // Icon for draft
   },
   {
-    id: "9",
-    caseNumber: "AGS-2024-000009",
-    location: "Negeri Sembilan",
-    type: "Gangguan Verbal",
-    date: "30-Januari-2025",
-    status: "Selesai Notis Pendengaran",
+    id: '9',
+    caseNumber: 'AGS-2024-000009',
+    location: 'Negeri Sembilan',
+    type: 'Gangguan Verbal',
+    date: '30-Januari-2025',
+    status: 'Selesai Notis Pendengaran',
     icon: <CheckSquare className="w-4 h-4 text-green-500" />, // Icon for completed
   },
   {
-    id: "10",
-    caseNumber: "AGS-2024-000010",
-    location: "Melaka",
-    type: "Gangguan Fizikal",
-    date: "5-Februari-2025",
-    status: "Draf-Aduan Gangguan Seksual",
+    id: '10',
+    caseNumber: 'AGS-2024-000010',
+    location: 'Melaka',
+    type: 'Gangguan Fizikal',
+    date: '5-Februari-2025',
+    status: 'Draf-Aduan Gangguan Seksual',
     icon: <Archive className="w-4 h-4 text-orange-500" />, // Icon for draft
   },
-];
+]
 
 function RouteComponent() {
   return (
@@ -145,43 +145,43 @@ function RouteComponent() {
           {/* Stats Section */}
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {[
-              { icon: Eye, label: "Semua", count: 5 },
-              { icon: MessageSquare, label: "Baru", count: 0 },
-              { icon: Heart, label: "Siasatan", count: 0 },
-              { icon: CheckSquare, label: "Sedang Disemak", count: 0 },
-              { icon: Archive, label: "Selesai", count: 0 },
-              { icon: Archive, label: "Ditutup", count: 0 },
+              { icon: Eye, label: 'Semua', count: 5 },
+              { icon: MessageSquare, label: 'Baru', count: 0 },
+              { icon: Heart, label: 'Siasatan', count: 0 },
+              { icon: CheckSquare, label: 'Sedang Disemak', count: 0 },
+              { icon: Archive, label: 'Selesai', count: 0 },
+              { icon: Archive, label: 'Ditutup', count: 0 },
             ].map((stat, index) => (
               <Card key={index} className="p-4">
                 <div className="flex flex-col items-center gap-2">
                   <div
                     className={`p-2 rounded-full ${
                       index === 0
-                        ? "bg-blue-100"
+                        ? 'bg-blue-100'
                         : index === 1
-                          ? "bg-orange-100"
+                          ? 'bg-orange-100'
                           : index === 2
-                            ? "bg-red-100"
+                            ? 'bg-red-100'
                             : index === 3
-                              ? "bg-purple-100"
+                              ? 'bg-purple-100'
                               : index === 4
-                                ? "bg-green-100"
-                                : "bg-gray-100"
+                                ? 'bg-green-100'
+                                : 'bg-gray-100'
                     }`}
                   >
                     <stat.icon
                       className={`h-5 w-5 ${
                         index === 0
-                          ? "text-blue-500"
+                          ? 'text-blue-500'
                           : index === 1
-                            ? "text-orange-500"
+                            ? 'text-orange-500'
                             : index === 2
-                              ? "text-red-500"
+                              ? 'text-red-500'
                               : index === 3
-                                ? "text-purple-500"
+                                ? 'text-purple-500'
                                 : index === 4
-                                  ? "text-green-500"
-                                  : "text-gray-500"
+                                  ? 'text-green-500'
+                                  : 'text-gray-500'
                       }`}
                     />
                   </div>
@@ -256,11 +256,11 @@ function RouteComponent() {
                             {row.icon} {/* Render the icon here */}
                             <span
                               className={`inline-block px-3 py-1 rounded-full text-sm ${
-                                row.status.includes("Selesai")
-                                  ? "bg-green-100 text-green-700"
-                                  : row.status.includes("Draf")
-                                    ? "bg-orange-100 text-orange-700"
-                                    : "bg-gray-100 text-gray-700"
+                                row.status.includes('Selesai')
+                                  ? 'bg-green-100 text-green-700'
+                                  : row.status.includes('Draf')
+                                    ? 'bg-orange-100 text-orange-700'
+                                    : 'bg-gray-100 text-gray-700'
                               }`}
                             >
                               {row.status}
@@ -277,5 +277,5 @@ function RouteComponent() {
         </div>
       </main>
     </div>
-  );
+  )
 }

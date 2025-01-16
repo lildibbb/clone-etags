@@ -25,7 +25,7 @@ const navSections = {
       items: [
         {
           title: "Dashboard",
-          url: "/dashboard/admin/home",
+          url: "/dashboard/home",
           icon: Home,
         },
       ],
@@ -35,23 +35,22 @@ const navSections = {
       items: [
         {
           title: "User Management",
-          url: "/admin/users",
           icon: Users,
           isActive: true,
           items: [
             {
               title: "Internal User",
-              url: "#",
+              url: "/dashboard/admin/manage/internal-users",
             },
             {
               title: "External User",
-              url: "#",
+              url: "/dashboard/admin/manage/external-users",
             },
           ],
         },
         {
           title: "System Settings",
-          url: "/admin/settings",
+          url: "/dashboard/admin/settings",
           icon: Settings,
         },
       ],
@@ -62,7 +61,7 @@ const navSections = {
       items: [
         {
           title: "Dashboard",
-          url: "/dashboard/pegawai/home",
+          url: "/dashboard/pegawai",
           icon: Home,
           isActive: true,
         },
@@ -73,17 +72,16 @@ const navSections = {
       items: [
         {
           title: "Lapor Aduan Baru",
-          url: "/pegawai/aduan-baru/borang3",
           icon: FileText,
           isActive: true,
           items: [
             {
               title: "Borang 3",
-              url: "/dashboard/pegawai/aduan-baru/borang3",
+              url: "/dashboard/pegawai/aduan-baru/borang-3",
             },
             {
               title: "Borang 4",
-              url: "/dashboard/pegawai/aduan-baru/borang4",
+              url: "/dashboard/pegawai/aduan-baru/borang-4",
             },
           ],
         },
@@ -100,7 +98,7 @@ const navSections = {
       items: [
         {
           title: "Dashboard",
-          url: "/dashboard/pengadu/home",
+          url: "/dashboard/pengadu",
           icon: Home,
         },
       ],
@@ -110,7 +108,7 @@ const navSections = {
       items: [
         {
           title: "Submit Complaint",
-          url: "/dashboard/pengadu/aduan-baru/borang1",
+          url: "/dashboard/pengadu/aduan-baru/borang-1",
           icon: MessageSquare,
         },
         {
@@ -126,7 +124,7 @@ const navSections = {
       items: [
         {
           title: "Dashboard",
-          url: "/dashboard/responden/home",
+          url: "/dashboard/responden",
           icon: Home,
         },
       ],
@@ -136,12 +134,12 @@ const navSections = {
       items: [
         {
           title: "Surveys",
-          url: "/responden/surveys",
+          url: "/dashboard/responden/surveys",
           icon: Clipboard,
         },
         {
           title: "My Responses",
-          url: "/responden/responses",
+          url: "/dashboard/responden/responses",
           icon: FileText,
         },
       ],

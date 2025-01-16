@@ -1,9 +1,9 @@
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Progress } from "@/components/ui/progress";
+import { Avatar, AvatarFallback } from '@/components/ui/avatar'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Progress } from '@/components/ui/progress'
 import {
   Table,
   TableBody,
@@ -11,8 +11,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table";
-import { createFileRoute } from "@tanstack/react-router";
+} from '@/components/ui/table'
+import { createFileRoute } from '@tanstack/react-router'
 import {
   AlertCircle,
   Battery,
@@ -25,55 +25,55 @@ import {
   MemoryStickIcon as Memory,
   MonitorDot,
   Ticket,
-} from "lucide-react";
+} from 'lucide-react'
 
-export const Route = createFileRoute("/dashboard/admin/_admin/home")({
+export const Route = createFileRoute('/dashboard/admin/_admin/')({
   component: RouteComponent,
-});
+})
 export const resources = [
   {
-    name: "Memory",
-    type: "RAM",
+    name: 'Memory',
+    type: 'RAM',
     usage: 45,
     icon: <Memory className="w-5 h-5" />,
   },
   {
-    name: "Storage",
-    type: "Database",
+    name: 'Storage',
+    type: 'Database',
     usage: 68,
     icon: <HardDrive className="w-5 h-5" />,
   },
   {
-    name: "Database",
-    type: "SQL",
+    name: 'Database',
+    type: 'SQL',
     usage: 52,
     icon: <Database className="w-5 h-5" />,
   },
   {
-    name: "CPU",
-    type: "Processor",
+    name: 'CPU',
+    type: 'Processor',
     usage: 78,
     icon: <Cpu className="w-5 h-5" />,
   },
   {
-    name: "RAM",
-    type: "Memory",
+    name: 'RAM',
+    type: 'Memory',
     usage: 32,
     icon: <Memory className="w-5 h-5" />,
   },
   {
-    name: "CPU",
-    type: "Graphics",
+    name: 'CPU',
+    type: 'Graphics',
     usage: 48,
     icon: <MonitorDot className="w-5 h-5" />,
   },
   {
-    name: "Battery",
-    type: "Power",
+    name: 'Battery',
+    type: 'Power',
     usage: 89,
     icon: <Battery className="w-5 h-5" />,
   },
-];
+]
 function RouteComponent() {
   return (
     <div className="flex flex-col h-screen">
@@ -312,5 +312,5 @@ function RouteComponent() {
         </div>
       </main>
     </div>
-  );
+  )
 }

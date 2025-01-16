@@ -18,14 +18,17 @@ import { Route as DashboardRespondenRespondenImport } from './routes/dashboard/r
 import { Route as DashboardPengaduPengaduImport } from './routes/dashboard/pengadu/_pengadu'
 import { Route as DashboardPegawaiPegawaiImport } from './routes/dashboard/pegawai/_pegawai'
 import { Route as DashboardAdminAdminImport } from './routes/dashboard/admin/_admin'
-import { Route as DashboardPengaduPengaduHomeImport } from './routes/dashboard/pengadu/_pengadu.home'
+import { Route as DashboardRespondenRespondenIndexImport } from './routes/dashboard/responden/_responden.index'
+import { Route as DashboardPengaduPengaduIndexImport } from './routes/dashboard/pengadu/_pengadu.index'
+import { Route as DashboardPegawaiPegawaiIndexImport } from './routes/dashboard/pegawai/_pegawai.index'
+import { Route as DashboardAdminAdminIndexImport } from './routes/dashboard/admin/_admin.index'
+import { Route as DashboardPengaduPengaduSenaraiAduanImport } from './routes/dashboard/pengadu/_pengadu.senarai-aduan'
 import { Route as DashboardPegawaiPegawaiSenaraiAduanImport } from './routes/dashboard/pegawai/_pegawai/senarai-aduan'
-import { Route as DashboardPegawaiPegawaiHomeImport } from './routes/dashboard/pegawai/_pegawai.home'
-import { Route as DashboardAdminAdminInternalUserImport } from './routes/dashboard/admin/_admin.internalUser'
-import { Route as DashboardAdminAdminHomeImport } from './routes/dashboard/admin/_admin.home'
-import { Route as DashboardAdminAdminExternalUserImport } from './routes/dashboard/admin/_admin.externalUser'
-import { Route as DashboardPegawaiPegawaiAduanBaruBorang4Import } from './routes/dashboard/pegawai/_pegawai/aduan-baru/borang4'
-import { Route as DashboardPegawaiPegawaiAduanBaruBorang3Import } from './routes/dashboard/pegawai/_pegawai/aduan-baru/borang3'
+import { Route as DashboardPengaduPengaduAduanBaruBorang1Import } from './routes/dashboard/pengadu/_pengadu/aduan-baru/borang-1'
+import { Route as DashboardPegawaiPegawaiAduanBaruBorang4Import } from './routes/dashboard/pegawai/_pegawai/aduan-baru/borang-4'
+import { Route as DashboardPegawaiPegawaiAduanBaruBorang3Import } from './routes/dashboard/pegawai/_pegawai/aduan-baru/borang-3'
+import { Route as DashboardAdminAdminManageInternalUsersImport } from './routes/dashboard/admin/_admin/manage/internal-users'
+import { Route as DashboardAdminAdminManageExternalUsersImport } from './routes/dashboard/admin/_admin/manage/external-users'
 
 // Create Virtual Routes
 
@@ -94,10 +97,37 @@ const DashboardAdminAdminRoute = DashboardAdminAdminImport.update({
   getParentRoute: () => DashboardAdminRoute,
 } as any)
 
-const DashboardPengaduPengaduHomeRoute =
-  DashboardPengaduPengaduHomeImport.update({
-    id: '/home',
-    path: '/home',
+const DashboardRespondenRespondenIndexRoute =
+  DashboardRespondenRespondenIndexImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => DashboardRespondenRespondenRoute,
+  } as any)
+
+const DashboardPengaduPengaduIndexRoute =
+  DashboardPengaduPengaduIndexImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => DashboardPengaduPengaduRoute,
+  } as any)
+
+const DashboardPegawaiPegawaiIndexRoute =
+  DashboardPegawaiPegawaiIndexImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => DashboardPegawaiPegawaiRoute,
+  } as any)
+
+const DashboardAdminAdminIndexRoute = DashboardAdminAdminIndexImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => DashboardAdminAdminRoute,
+} as any)
+
+const DashboardPengaduPengaduSenaraiAduanRoute =
+  DashboardPengaduPengaduSenaraiAduanImport.update({
+    id: '/senarai-aduan',
+    path: '/senarai-aduan',
     getParentRoute: () => DashboardPengaduPengaduRoute,
   } as any)
 
@@ -108,45 +138,39 @@ const DashboardPegawaiPegawaiSenaraiAduanRoute =
     getParentRoute: () => DashboardPegawaiPegawaiRoute,
   } as any)
 
-const DashboardPegawaiPegawaiHomeRoute =
-  DashboardPegawaiPegawaiHomeImport.update({
-    id: '/home',
-    path: '/home',
-    getParentRoute: () => DashboardPegawaiPegawaiRoute,
-  } as any)
-
-const DashboardAdminAdminInternalUserRoute =
-  DashboardAdminAdminInternalUserImport.update({
-    id: '/internalUser',
-    path: '/internalUser',
-    getParentRoute: () => DashboardAdminAdminRoute,
-  } as any)
-
-const DashboardAdminAdminHomeRoute = DashboardAdminAdminHomeImport.update({
-  id: '/home',
-  path: '/home',
-  getParentRoute: () => DashboardAdminAdminRoute,
-} as any)
-
-const DashboardAdminAdminExternalUserRoute =
-  DashboardAdminAdminExternalUserImport.update({
-    id: '/externalUser',
-    path: '/externalUser',
-    getParentRoute: () => DashboardAdminAdminRoute,
+const DashboardPengaduPengaduAduanBaruBorang1Route =
+  DashboardPengaduPengaduAduanBaruBorang1Import.update({
+    id: '/aduan-baru/borang-1',
+    path: '/aduan-baru/borang-1',
+    getParentRoute: () => DashboardPengaduPengaduRoute,
   } as any)
 
 const DashboardPegawaiPegawaiAduanBaruBorang4Route =
   DashboardPegawaiPegawaiAduanBaruBorang4Import.update({
-    id: '/aduan-baru/borang4',
-    path: '/aduan-baru/borang4',
+    id: '/aduan-baru/borang-4',
+    path: '/aduan-baru/borang-4',
     getParentRoute: () => DashboardPegawaiPegawaiRoute,
   } as any)
 
 const DashboardPegawaiPegawaiAduanBaruBorang3Route =
   DashboardPegawaiPegawaiAduanBaruBorang3Import.update({
-    id: '/aduan-baru/borang3',
-    path: '/aduan-baru/borang3',
+    id: '/aduan-baru/borang-3',
+    path: '/aduan-baru/borang-3',
     getParentRoute: () => DashboardPegawaiPegawaiRoute,
+  } as any)
+
+const DashboardAdminAdminManageInternalUsersRoute =
+  DashboardAdminAdminManageInternalUsersImport.update({
+    id: '/manage/internal-users',
+    path: '/manage/internal-users',
+    getParentRoute: () => DashboardAdminAdminRoute,
+  } as any)
+
+const DashboardAdminAdminManageExternalUsersRoute =
+  DashboardAdminAdminManageExternalUsersImport.update({
+    id: '/manage/external-users',
+    path: '/manage/external-users',
+    getParentRoute: () => DashboardAdminAdminRoute,
   } as any)
 
 // Populate the FileRoutesByPath interface
@@ -223,34 +247,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardRespondenRespondenImport
       parentRoute: typeof DashboardRespondenRoute
     }
-    '/dashboard/admin/_admin/externalUser': {
-      id: '/dashboard/admin/_admin/externalUser'
-      path: '/externalUser'
-      fullPath: '/dashboard/admin/externalUser'
-      preLoaderRoute: typeof DashboardAdminAdminExternalUserImport
-      parentRoute: typeof DashboardAdminAdminImport
-    }
-    '/dashboard/admin/_admin/home': {
-      id: '/dashboard/admin/_admin/home'
-      path: '/home'
-      fullPath: '/dashboard/admin/home'
-      preLoaderRoute: typeof DashboardAdminAdminHomeImport
-      parentRoute: typeof DashboardAdminAdminImport
-    }
-    '/dashboard/admin/_admin/internalUser': {
-      id: '/dashboard/admin/_admin/internalUser'
-      path: '/internalUser'
-      fullPath: '/dashboard/admin/internalUser'
-      preLoaderRoute: typeof DashboardAdminAdminInternalUserImport
-      parentRoute: typeof DashboardAdminAdminImport
-    }
-    '/dashboard/pegawai/_pegawai/home': {
-      id: '/dashboard/pegawai/_pegawai/home'
-      path: '/home'
-      fullPath: '/dashboard/pegawai/home'
-      preLoaderRoute: typeof DashboardPegawaiPegawaiHomeImport
-      parentRoute: typeof DashboardPegawaiPegawaiImport
-    }
     '/dashboard/pegawai/_pegawai/senarai-aduan': {
       id: '/dashboard/pegawai/_pegawai/senarai-aduan'
       path: '/senarai-aduan'
@@ -258,26 +254,75 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DashboardPegawaiPegawaiSenaraiAduanImport
       parentRoute: typeof DashboardPegawaiPegawaiImport
     }
-    '/dashboard/pengadu/_pengadu/home': {
-      id: '/dashboard/pengadu/_pengadu/home'
-      path: '/home'
-      fullPath: '/dashboard/pengadu/home'
-      preLoaderRoute: typeof DashboardPengaduPengaduHomeImport
+    '/dashboard/pengadu/_pengadu/senarai-aduan': {
+      id: '/dashboard/pengadu/_pengadu/senarai-aduan'
+      path: '/senarai-aduan'
+      fullPath: '/dashboard/pengadu/senarai-aduan'
+      preLoaderRoute: typeof DashboardPengaduPengaduSenaraiAduanImport
       parentRoute: typeof DashboardPengaduPengaduImport
     }
-    '/dashboard/pegawai/_pegawai/aduan-baru/borang3': {
-      id: '/dashboard/pegawai/_pegawai/aduan-baru/borang3'
-      path: '/aduan-baru/borang3'
-      fullPath: '/dashboard/pegawai/aduan-baru/borang3'
+    '/dashboard/admin/_admin/': {
+      id: '/dashboard/admin/_admin/'
+      path: '/'
+      fullPath: '/dashboard/admin/'
+      preLoaderRoute: typeof DashboardAdminAdminIndexImport
+      parentRoute: typeof DashboardAdminAdminImport
+    }
+    '/dashboard/pegawai/_pegawai/': {
+      id: '/dashboard/pegawai/_pegawai/'
+      path: '/'
+      fullPath: '/dashboard/pegawai/'
+      preLoaderRoute: typeof DashboardPegawaiPegawaiIndexImport
+      parentRoute: typeof DashboardPegawaiPegawaiImport
+    }
+    '/dashboard/pengadu/_pengadu/': {
+      id: '/dashboard/pengadu/_pengadu/'
+      path: '/'
+      fullPath: '/dashboard/pengadu/'
+      preLoaderRoute: typeof DashboardPengaduPengaduIndexImport
+      parentRoute: typeof DashboardPengaduPengaduImport
+    }
+    '/dashboard/responden/_responden/': {
+      id: '/dashboard/responden/_responden/'
+      path: '/'
+      fullPath: '/dashboard/responden/'
+      preLoaderRoute: typeof DashboardRespondenRespondenIndexImport
+      parentRoute: typeof DashboardRespondenRespondenImport
+    }
+    '/dashboard/admin/_admin/manage/external-users': {
+      id: '/dashboard/admin/_admin/manage/external-users'
+      path: '/manage/external-users'
+      fullPath: '/dashboard/admin/manage/external-users'
+      preLoaderRoute: typeof DashboardAdminAdminManageExternalUsersImport
+      parentRoute: typeof DashboardAdminAdminImport
+    }
+    '/dashboard/admin/_admin/manage/internal-users': {
+      id: '/dashboard/admin/_admin/manage/internal-users'
+      path: '/manage/internal-users'
+      fullPath: '/dashboard/admin/manage/internal-users'
+      preLoaderRoute: typeof DashboardAdminAdminManageInternalUsersImport
+      parentRoute: typeof DashboardAdminAdminImport
+    }
+    '/dashboard/pegawai/_pegawai/aduan-baru/borang-3': {
+      id: '/dashboard/pegawai/_pegawai/aduan-baru/borang-3'
+      path: '/aduan-baru/borang-3'
+      fullPath: '/dashboard/pegawai/aduan-baru/borang-3'
       preLoaderRoute: typeof DashboardPegawaiPegawaiAduanBaruBorang3Import
       parentRoute: typeof DashboardPegawaiPegawaiImport
     }
-    '/dashboard/pegawai/_pegawai/aduan-baru/borang4': {
-      id: '/dashboard/pegawai/_pegawai/aduan-baru/borang4'
-      path: '/aduan-baru/borang4'
-      fullPath: '/dashboard/pegawai/aduan-baru/borang4'
+    '/dashboard/pegawai/_pegawai/aduan-baru/borang-4': {
+      id: '/dashboard/pegawai/_pegawai/aduan-baru/borang-4'
+      path: '/aduan-baru/borang-4'
+      fullPath: '/dashboard/pegawai/aduan-baru/borang-4'
       preLoaderRoute: typeof DashboardPegawaiPegawaiAduanBaruBorang4Import
       parentRoute: typeof DashboardPegawaiPegawaiImport
+    }
+    '/dashboard/pengadu/_pengadu/aduan-baru/borang-1': {
+      id: '/dashboard/pengadu/_pengadu/aduan-baru/borang-1'
+      path: '/aduan-baru/borang-1'
+      fullPath: '/dashboard/pengadu/aduan-baru/borang-1'
+      preLoaderRoute: typeof DashboardPengaduPengaduAduanBaruBorang1Import
+      parentRoute: typeof DashboardPengaduPengaduImport
     }
   }
 }
@@ -285,15 +330,17 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 interface DashboardAdminAdminRouteChildren {
-  DashboardAdminAdminExternalUserRoute: typeof DashboardAdminAdminExternalUserRoute
-  DashboardAdminAdminHomeRoute: typeof DashboardAdminAdminHomeRoute
-  DashboardAdminAdminInternalUserRoute: typeof DashboardAdminAdminInternalUserRoute
+  DashboardAdminAdminIndexRoute: typeof DashboardAdminAdminIndexRoute
+  DashboardAdminAdminManageExternalUsersRoute: typeof DashboardAdminAdminManageExternalUsersRoute
+  DashboardAdminAdminManageInternalUsersRoute: typeof DashboardAdminAdminManageInternalUsersRoute
 }
 
 const DashboardAdminAdminRouteChildren: DashboardAdminAdminRouteChildren = {
-  DashboardAdminAdminExternalUserRoute: DashboardAdminAdminExternalUserRoute,
-  DashboardAdminAdminHomeRoute: DashboardAdminAdminHomeRoute,
-  DashboardAdminAdminInternalUserRoute: DashboardAdminAdminInternalUserRoute,
+  DashboardAdminAdminIndexRoute: DashboardAdminAdminIndexRoute,
+  DashboardAdminAdminManageExternalUsersRoute:
+    DashboardAdminAdminManageExternalUsersRoute,
+  DashboardAdminAdminManageInternalUsersRoute:
+    DashboardAdminAdminManageInternalUsersRoute,
 }
 
 const DashboardAdminAdminRouteWithChildren =
@@ -312,17 +359,17 @@ const DashboardAdminRouteWithChildren = DashboardAdminRoute._addFileChildren(
 )
 
 interface DashboardPegawaiPegawaiRouteChildren {
-  DashboardPegawaiPegawaiHomeRoute: typeof DashboardPegawaiPegawaiHomeRoute
   DashboardPegawaiPegawaiSenaraiAduanRoute: typeof DashboardPegawaiPegawaiSenaraiAduanRoute
+  DashboardPegawaiPegawaiIndexRoute: typeof DashboardPegawaiPegawaiIndexRoute
   DashboardPegawaiPegawaiAduanBaruBorang3Route: typeof DashboardPegawaiPegawaiAduanBaruBorang3Route
   DashboardPegawaiPegawaiAduanBaruBorang4Route: typeof DashboardPegawaiPegawaiAduanBaruBorang4Route
 }
 
 const DashboardPegawaiPegawaiRouteChildren: DashboardPegawaiPegawaiRouteChildren =
   {
-    DashboardPegawaiPegawaiHomeRoute: DashboardPegawaiPegawaiHomeRoute,
     DashboardPegawaiPegawaiSenaraiAduanRoute:
       DashboardPegawaiPegawaiSenaraiAduanRoute,
+    DashboardPegawaiPegawaiIndexRoute: DashboardPegawaiPegawaiIndexRoute,
     DashboardPegawaiPegawaiAduanBaruBorang3Route:
       DashboardPegawaiPegawaiAduanBaruBorang3Route,
     DashboardPegawaiPegawaiAduanBaruBorang4Route:
@@ -346,12 +393,18 @@ const DashboardPegawaiRouteWithChildren =
   DashboardPegawaiRoute._addFileChildren(DashboardPegawaiRouteChildren)
 
 interface DashboardPengaduPengaduRouteChildren {
-  DashboardPengaduPengaduHomeRoute: typeof DashboardPengaduPengaduHomeRoute
+  DashboardPengaduPengaduSenaraiAduanRoute: typeof DashboardPengaduPengaduSenaraiAduanRoute
+  DashboardPengaduPengaduIndexRoute: typeof DashboardPengaduPengaduIndexRoute
+  DashboardPengaduPengaduAduanBaruBorang1Route: typeof DashboardPengaduPengaduAduanBaruBorang1Route
 }
 
 const DashboardPengaduPengaduRouteChildren: DashboardPengaduPengaduRouteChildren =
   {
-    DashboardPengaduPengaduHomeRoute: DashboardPengaduPengaduHomeRoute,
+    DashboardPengaduPengaduSenaraiAduanRoute:
+      DashboardPengaduPengaduSenaraiAduanRoute,
+    DashboardPengaduPengaduIndexRoute: DashboardPengaduPengaduIndexRoute,
+    DashboardPengaduPengaduAduanBaruBorang1Route:
+      DashboardPengaduPengaduAduanBaruBorang1Route,
   }
 
 const DashboardPengaduPengaduRouteWithChildren =
@@ -370,12 +423,28 @@ const DashboardPengaduRouteChildren: DashboardPengaduRouteChildren = {
 const DashboardPengaduRouteWithChildren =
   DashboardPengaduRoute._addFileChildren(DashboardPengaduRouteChildren)
 
+interface DashboardRespondenRespondenRouteChildren {
+  DashboardRespondenRespondenIndexRoute: typeof DashboardRespondenRespondenIndexRoute
+}
+
+const DashboardRespondenRespondenRouteChildren: DashboardRespondenRespondenRouteChildren =
+  {
+    DashboardRespondenRespondenIndexRoute:
+      DashboardRespondenRespondenIndexRoute,
+  }
+
+const DashboardRespondenRespondenRouteWithChildren =
+  DashboardRespondenRespondenRoute._addFileChildren(
+    DashboardRespondenRespondenRouteChildren,
+  )
+
 interface DashboardRespondenRouteChildren {
-  DashboardRespondenRespondenRoute: typeof DashboardRespondenRespondenRoute
+  DashboardRespondenRespondenRoute: typeof DashboardRespondenRespondenRouteWithChildren
 }
 
 const DashboardRespondenRouteChildren: DashboardRespondenRouteChildren = {
-  DashboardRespondenRespondenRoute: DashboardRespondenRespondenRoute,
+  DashboardRespondenRespondenRoute:
+    DashboardRespondenRespondenRouteWithChildren,
 }
 
 const DashboardRespondenRouteWithChildren =
@@ -387,32 +456,34 @@ export interface FileRoutesByFullPath {
   '/dashboard/admin': typeof DashboardAdminAdminRouteWithChildren
   '/dashboard/pegawai': typeof DashboardPegawaiPegawaiRouteWithChildren
   '/dashboard/pengadu': typeof DashboardPengaduPengaduRouteWithChildren
-  '/dashboard/responden': typeof DashboardRespondenRespondenRoute
-  '/dashboard/admin/externalUser': typeof DashboardAdminAdminExternalUserRoute
-  '/dashboard/admin/home': typeof DashboardAdminAdminHomeRoute
-  '/dashboard/admin/internalUser': typeof DashboardAdminAdminInternalUserRoute
-  '/dashboard/pegawai/home': typeof DashboardPegawaiPegawaiHomeRoute
+  '/dashboard/responden': typeof DashboardRespondenRespondenRouteWithChildren
   '/dashboard/pegawai/senarai-aduan': typeof DashboardPegawaiPegawaiSenaraiAduanRoute
-  '/dashboard/pengadu/home': typeof DashboardPengaduPengaduHomeRoute
-  '/dashboard/pegawai/aduan-baru/borang3': typeof DashboardPegawaiPegawaiAduanBaruBorang3Route
-  '/dashboard/pegawai/aduan-baru/borang4': typeof DashboardPegawaiPegawaiAduanBaruBorang4Route
+  '/dashboard/pengadu/senarai-aduan': typeof DashboardPengaduPengaduSenaraiAduanRoute
+  '/dashboard/admin/': typeof DashboardAdminAdminIndexRoute
+  '/dashboard/pegawai/': typeof DashboardPegawaiPegawaiIndexRoute
+  '/dashboard/pengadu/': typeof DashboardPengaduPengaduIndexRoute
+  '/dashboard/responden/': typeof DashboardRespondenRespondenIndexRoute
+  '/dashboard/admin/manage/external-users': typeof DashboardAdminAdminManageExternalUsersRoute
+  '/dashboard/admin/manage/internal-users': typeof DashboardAdminAdminManageInternalUsersRoute
+  '/dashboard/pegawai/aduan-baru/borang-3': typeof DashboardPegawaiPegawaiAduanBaruBorang3Route
+  '/dashboard/pegawai/aduan-baru/borang-4': typeof DashboardPegawaiPegawaiAduanBaruBorang4Route
+  '/dashboard/pengadu/aduan-baru/borang-1': typeof DashboardPengaduPengaduAduanBaruBorang1Route
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexLazyRoute
   '/login': typeof LoginRoute
-  '/dashboard/admin': typeof DashboardAdminAdminRouteWithChildren
-  '/dashboard/pegawai': typeof DashboardPegawaiPegawaiRouteWithChildren
-  '/dashboard/pengadu': typeof DashboardPengaduPengaduRouteWithChildren
-  '/dashboard/responden': typeof DashboardRespondenRespondenRoute
-  '/dashboard/admin/externalUser': typeof DashboardAdminAdminExternalUserRoute
-  '/dashboard/admin/home': typeof DashboardAdminAdminHomeRoute
-  '/dashboard/admin/internalUser': typeof DashboardAdminAdminInternalUserRoute
-  '/dashboard/pegawai/home': typeof DashboardPegawaiPegawaiHomeRoute
+  '/dashboard/admin': typeof DashboardAdminAdminIndexRoute
+  '/dashboard/pegawai': typeof DashboardPegawaiPegawaiIndexRoute
+  '/dashboard/pengadu': typeof DashboardPengaduPengaduIndexRoute
+  '/dashboard/responden': typeof DashboardRespondenRespondenIndexRoute
   '/dashboard/pegawai/senarai-aduan': typeof DashboardPegawaiPegawaiSenaraiAduanRoute
-  '/dashboard/pengadu/home': typeof DashboardPengaduPengaduHomeRoute
-  '/dashboard/pegawai/aduan-baru/borang3': typeof DashboardPegawaiPegawaiAduanBaruBorang3Route
-  '/dashboard/pegawai/aduan-baru/borang4': typeof DashboardPegawaiPegawaiAduanBaruBorang4Route
+  '/dashboard/pengadu/senarai-aduan': typeof DashboardPengaduPengaduSenaraiAduanRoute
+  '/dashboard/admin/manage/external-users': typeof DashboardAdminAdminManageExternalUsersRoute
+  '/dashboard/admin/manage/internal-users': typeof DashboardAdminAdminManageInternalUsersRoute
+  '/dashboard/pegawai/aduan-baru/borang-3': typeof DashboardPegawaiPegawaiAduanBaruBorang3Route
+  '/dashboard/pegawai/aduan-baru/borang-4': typeof DashboardPegawaiPegawaiAduanBaruBorang4Route
+  '/dashboard/pengadu/aduan-baru/borang-1': typeof DashboardPengaduPengaduAduanBaruBorang1Route
 }
 
 export interface FileRoutesById {
@@ -426,15 +497,18 @@ export interface FileRoutesById {
   '/dashboard/pengadu': typeof DashboardPengaduRouteWithChildren
   '/dashboard/pengadu/_pengadu': typeof DashboardPengaduPengaduRouteWithChildren
   '/dashboard/responden': typeof DashboardRespondenRouteWithChildren
-  '/dashboard/responden/_responden': typeof DashboardRespondenRespondenRoute
-  '/dashboard/admin/_admin/externalUser': typeof DashboardAdminAdminExternalUserRoute
-  '/dashboard/admin/_admin/home': typeof DashboardAdminAdminHomeRoute
-  '/dashboard/admin/_admin/internalUser': typeof DashboardAdminAdminInternalUserRoute
-  '/dashboard/pegawai/_pegawai/home': typeof DashboardPegawaiPegawaiHomeRoute
+  '/dashboard/responden/_responden': typeof DashboardRespondenRespondenRouteWithChildren
   '/dashboard/pegawai/_pegawai/senarai-aduan': typeof DashboardPegawaiPegawaiSenaraiAduanRoute
-  '/dashboard/pengadu/_pengadu/home': typeof DashboardPengaduPengaduHomeRoute
-  '/dashboard/pegawai/_pegawai/aduan-baru/borang3': typeof DashboardPegawaiPegawaiAduanBaruBorang3Route
-  '/dashboard/pegawai/_pegawai/aduan-baru/borang4': typeof DashboardPegawaiPegawaiAduanBaruBorang4Route
+  '/dashboard/pengadu/_pengadu/senarai-aduan': typeof DashboardPengaduPengaduSenaraiAduanRoute
+  '/dashboard/admin/_admin/': typeof DashboardAdminAdminIndexRoute
+  '/dashboard/pegawai/_pegawai/': typeof DashboardPegawaiPegawaiIndexRoute
+  '/dashboard/pengadu/_pengadu/': typeof DashboardPengaduPengaduIndexRoute
+  '/dashboard/responden/_responden/': typeof DashboardRespondenRespondenIndexRoute
+  '/dashboard/admin/_admin/manage/external-users': typeof DashboardAdminAdminManageExternalUsersRoute
+  '/dashboard/admin/_admin/manage/internal-users': typeof DashboardAdminAdminManageInternalUsersRoute
+  '/dashboard/pegawai/_pegawai/aduan-baru/borang-3': typeof DashboardPegawaiPegawaiAduanBaruBorang3Route
+  '/dashboard/pegawai/_pegawai/aduan-baru/borang-4': typeof DashboardPegawaiPegawaiAduanBaruBorang4Route
+  '/dashboard/pengadu/_pengadu/aduan-baru/borang-1': typeof DashboardPengaduPengaduAduanBaruBorang1Route
 }
 
 export interface FileRouteTypes {
@@ -446,14 +520,17 @@ export interface FileRouteTypes {
     | '/dashboard/pegawai'
     | '/dashboard/pengadu'
     | '/dashboard/responden'
-    | '/dashboard/admin/externalUser'
-    | '/dashboard/admin/home'
-    | '/dashboard/admin/internalUser'
-    | '/dashboard/pegawai/home'
     | '/dashboard/pegawai/senarai-aduan'
-    | '/dashboard/pengadu/home'
-    | '/dashboard/pegawai/aduan-baru/borang3'
-    | '/dashboard/pegawai/aduan-baru/borang4'
+    | '/dashboard/pengadu/senarai-aduan'
+    | '/dashboard/admin/'
+    | '/dashboard/pegawai/'
+    | '/dashboard/pengadu/'
+    | '/dashboard/responden/'
+    | '/dashboard/admin/manage/external-users'
+    | '/dashboard/admin/manage/internal-users'
+    | '/dashboard/pegawai/aduan-baru/borang-3'
+    | '/dashboard/pegawai/aduan-baru/borang-4'
+    | '/dashboard/pengadu/aduan-baru/borang-1'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -462,14 +539,13 @@ export interface FileRouteTypes {
     | '/dashboard/pegawai'
     | '/dashboard/pengadu'
     | '/dashboard/responden'
-    | '/dashboard/admin/externalUser'
-    | '/dashboard/admin/home'
-    | '/dashboard/admin/internalUser'
-    | '/dashboard/pegawai/home'
     | '/dashboard/pegawai/senarai-aduan'
-    | '/dashboard/pengadu/home'
-    | '/dashboard/pegawai/aduan-baru/borang3'
-    | '/dashboard/pegawai/aduan-baru/borang4'
+    | '/dashboard/pengadu/senarai-aduan'
+    | '/dashboard/admin/manage/external-users'
+    | '/dashboard/admin/manage/internal-users'
+    | '/dashboard/pegawai/aduan-baru/borang-3'
+    | '/dashboard/pegawai/aduan-baru/borang-4'
+    | '/dashboard/pengadu/aduan-baru/borang-1'
   id:
     | '__root__'
     | '/'
@@ -482,14 +558,17 @@ export interface FileRouteTypes {
     | '/dashboard/pengadu/_pengadu'
     | '/dashboard/responden'
     | '/dashboard/responden/_responden'
-    | '/dashboard/admin/_admin/externalUser'
-    | '/dashboard/admin/_admin/home'
-    | '/dashboard/admin/_admin/internalUser'
-    | '/dashboard/pegawai/_pegawai/home'
     | '/dashboard/pegawai/_pegawai/senarai-aduan'
-    | '/dashboard/pengadu/_pengadu/home'
-    | '/dashboard/pegawai/_pegawai/aduan-baru/borang3'
-    | '/dashboard/pegawai/_pegawai/aduan-baru/borang4'
+    | '/dashboard/pengadu/_pengadu/senarai-aduan'
+    | '/dashboard/admin/_admin/'
+    | '/dashboard/pegawai/_pegawai/'
+    | '/dashboard/pengadu/_pengadu/'
+    | '/dashboard/responden/_responden/'
+    | '/dashboard/admin/_admin/manage/external-users'
+    | '/dashboard/admin/_admin/manage/internal-users'
+    | '/dashboard/pegawai/_pegawai/aduan-baru/borang-3'
+    | '/dashboard/pegawai/_pegawai/aduan-baru/borang-4'
+    | '/dashboard/pengadu/_pengadu/aduan-baru/borang-1'
   fileRoutesById: FileRoutesById
 }
 
@@ -545,9 +624,9 @@ export const routeTree = rootRoute
       "filePath": "dashboard/admin/_admin.tsx",
       "parent": "/dashboard/admin",
       "children": [
-        "/dashboard/admin/_admin/externalUser",
-        "/dashboard/admin/_admin/home",
-        "/dashboard/admin/_admin/internalUser"
+        "/dashboard/admin/_admin/",
+        "/dashboard/admin/_admin/manage/external-users",
+        "/dashboard/admin/_admin/manage/internal-users"
       ]
     },
     "/dashboard/pegawai": {
@@ -560,10 +639,10 @@ export const routeTree = rootRoute
       "filePath": "dashboard/pegawai/_pegawai.tsx",
       "parent": "/dashboard/pegawai",
       "children": [
-        "/dashboard/pegawai/_pegawai/home",
         "/dashboard/pegawai/_pegawai/senarai-aduan",
-        "/dashboard/pegawai/_pegawai/aduan-baru/borang3",
-        "/dashboard/pegawai/_pegawai/aduan-baru/borang4"
+        "/dashboard/pegawai/_pegawai/",
+        "/dashboard/pegawai/_pegawai/aduan-baru/borang-3",
+        "/dashboard/pegawai/_pegawai/aduan-baru/borang-4"
       ]
     },
     "/dashboard/pengadu": {
@@ -576,7 +655,9 @@ export const routeTree = rootRoute
       "filePath": "dashboard/pengadu/_pengadu.tsx",
       "parent": "/dashboard/pengadu",
       "children": [
-        "/dashboard/pengadu/_pengadu/home"
+        "/dashboard/pengadu/_pengadu/senarai-aduan",
+        "/dashboard/pengadu/_pengadu/",
+        "/dashboard/pengadu/_pengadu/aduan-baru/borang-1"
       ]
     },
     "/dashboard/responden": {
@@ -587,39 +668,54 @@ export const routeTree = rootRoute
     },
     "/dashboard/responden/_responden": {
       "filePath": "dashboard/responden/_responden.tsx",
-      "parent": "/dashboard/responden"
-    },
-    "/dashboard/admin/_admin/externalUser": {
-      "filePath": "dashboard/admin/_admin.externalUser.tsx",
-      "parent": "/dashboard/admin/_admin"
-    },
-    "/dashboard/admin/_admin/home": {
-      "filePath": "dashboard/admin/_admin.home.tsx",
-      "parent": "/dashboard/admin/_admin"
-    },
-    "/dashboard/admin/_admin/internalUser": {
-      "filePath": "dashboard/admin/_admin.internalUser.tsx",
-      "parent": "/dashboard/admin/_admin"
-    },
-    "/dashboard/pegawai/_pegawai/home": {
-      "filePath": "dashboard/pegawai/_pegawai.home.tsx",
-      "parent": "/dashboard/pegawai/_pegawai"
+      "parent": "/dashboard/responden",
+      "children": [
+        "/dashboard/responden/_responden/"
+      ]
     },
     "/dashboard/pegawai/_pegawai/senarai-aduan": {
       "filePath": "dashboard/pegawai/_pegawai/senarai-aduan.tsx",
       "parent": "/dashboard/pegawai/_pegawai"
     },
-    "/dashboard/pengadu/_pengadu/home": {
-      "filePath": "dashboard/pengadu/_pengadu.home.tsx",
+    "/dashboard/pengadu/_pengadu/senarai-aduan": {
+      "filePath": "dashboard/pengadu/_pengadu.senarai-aduan.tsx",
       "parent": "/dashboard/pengadu/_pengadu"
     },
-    "/dashboard/pegawai/_pegawai/aduan-baru/borang3": {
-      "filePath": "dashboard/pegawai/_pegawai/aduan-baru/borang3.tsx",
+    "/dashboard/admin/_admin/": {
+      "filePath": "dashboard/admin/_admin.index.tsx",
+      "parent": "/dashboard/admin/_admin"
+    },
+    "/dashboard/pegawai/_pegawai/": {
+      "filePath": "dashboard/pegawai/_pegawai.index.tsx",
       "parent": "/dashboard/pegawai/_pegawai"
     },
-    "/dashboard/pegawai/_pegawai/aduan-baru/borang4": {
-      "filePath": "dashboard/pegawai/_pegawai/aduan-baru/borang4.tsx",
+    "/dashboard/pengadu/_pengadu/": {
+      "filePath": "dashboard/pengadu/_pengadu.index.tsx",
+      "parent": "/dashboard/pengadu/_pengadu"
+    },
+    "/dashboard/responden/_responden/": {
+      "filePath": "dashboard/responden/_responden.index.tsx",
+      "parent": "/dashboard/responden/_responden"
+    },
+    "/dashboard/admin/_admin/manage/external-users": {
+      "filePath": "dashboard/admin/_admin/manage/external-users.tsx",
+      "parent": "/dashboard/admin/_admin"
+    },
+    "/dashboard/admin/_admin/manage/internal-users": {
+      "filePath": "dashboard/admin/_admin/manage/internal-users.tsx",
+      "parent": "/dashboard/admin/_admin"
+    },
+    "/dashboard/pegawai/_pegawai/aduan-baru/borang-3": {
+      "filePath": "dashboard/pegawai/_pegawai/aduan-baru/borang-3.tsx",
       "parent": "/dashboard/pegawai/_pegawai"
+    },
+    "/dashboard/pegawai/_pegawai/aduan-baru/borang-4": {
+      "filePath": "dashboard/pegawai/_pegawai/aduan-baru/borang-4.tsx",
+      "parent": "/dashboard/pegawai/_pegawai"
+    },
+    "/dashboard/pengadu/_pengadu/aduan-baru/borang-1": {
+      "filePath": "dashboard/pengadu/_pengadu/aduan-baru/borang-1.tsx",
+      "parent": "/dashboard/pengadu/_pengadu"
     }
   }
 }

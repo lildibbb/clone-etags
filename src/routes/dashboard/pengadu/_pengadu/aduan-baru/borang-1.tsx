@@ -1,56 +1,56 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { createFileRoute } from '@tanstack/react-router'
+import { useState } from 'react'
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
   CardDescription,
-} from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Progress } from "@/components/ui/progress";
-import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { ComplainantForm } from "@/components/form/butiranA-form";
-import { ComplaintDetailsForm } from "@/components/form/butiranB-form";
-import { PaymentForm } from "@/components/form/payment-form";
+} from '@/components/ui/card'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Progress } from '@/components/ui/progress'
+import { Button } from '@/components/ui/button'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { ComplainantForm } from '@/components/form/butiranA-form'
+import { ComplaintDetailsForm } from '@/components/form/butiranB-form'
+import { PaymentForm } from '@/components/form/payment-form'
 
 export const Route = createFileRoute(
-  "/dashboard/pengadu/_pengadu/aduan-baru/borang1"
+  '/dashboard/pengadu/_pengadu/aduan-baru/borang-1',
 )({
   component: RouteComponent,
-});
+})
 
 function RouteComponent() {
-  const [activeTab, setActiveTab] = useState("A");
-  const [progress, setProgress] = useState(33);
+  const [activeTab, setActiveTab] = useState('A')
+  const [progress, setProgress] = useState(33)
 
   const tabs = [
-    { id: "A", label: "MAKLUMAT PENGADU" },
-    { id: "B", label: "BUTIR ADUAN" },
-    { id: "C", label: "PEMBAYARAN" },
-  ];
+    { id: 'A', label: 'MAKLUMAT PENGADU' },
+    { id: 'B', label: 'BUTIR ADUAN' },
+    { id: 'C', label: 'PEMBAYARAN' },
+  ]
 
-  const currentTabIndex = tabs.findIndex((tab) => tab.id === activeTab);
+  const currentTabIndex = tabs.findIndex((tab) => tab.id === activeTab)
 
   const handleTabChange = (value: string) => {
-    setActiveTab(value);
-    setProgress(value === "A" ? 33 : value === "B" ? 66 : 100);
-  };
+    setActiveTab(value)
+    setProgress(value === 'A' ? 33 : value === 'B' ? 66 : 100)
+  }
 
   const handleNext = () => {
-    const nextTab = tabs[currentTabIndex + 1];
+    const nextTab = tabs[currentTabIndex + 1]
     if (nextTab) {
-      handleTabChange(nextTab.id);
+      handleTabChange(nextTab.id)
     }
-  };
+  }
 
   const handlePrevious = () => {
-    const previousTab = tabs[currentTabIndex - 1];
+    const previousTab = tabs[currentTabIndex - 1]
     if (previousTab) {
-      handleTabChange(previousTab.id);
+      handleTabChange(previousTab.id)
     }
-  };
+  }
 
   return (
     <div className="flex flex-col h-screen">
@@ -126,5 +126,5 @@ function RouteComponent() {
         </Card>
       </main>
     </div>
-  );
+  )
 }

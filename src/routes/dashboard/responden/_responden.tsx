@@ -11,11 +11,10 @@ function RouteComponent() {
 		<div className="flex min-h-screen">
 			<SidebarProvider>
 				<AppSidebar userType="responden" />
+				<div className="flex-1 flex flex-col">
+					<Outlet />
+				</div>
 			</SidebarProvider>
-
-			<div className="flex-1 flex flex-col overflow-hidden">
-				<Outlet />
-			</div>
 		</div>
 	);
 }
