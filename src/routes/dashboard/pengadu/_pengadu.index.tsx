@@ -66,7 +66,7 @@ function RouteComponent() {
 							<h1 className="text-2xl font-semibold">Hello,</h1>
 							<h2 className="text-3xl font-bold mb-2">Nur Hamizah</h2>
 							<p className="text-sm opacity-90">
-								Last login 03 Disember 2024 (4pm)
+								Last login 14 Januari 2025 (12:40 PM)
 							</p>
 						</div>
 					</Card>
@@ -74,8 +74,8 @@ function RouteComponent() {
 					{/* Stats Section */}
 					<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
 						{[
-							{ id: "all", icon: Eye, label: "Semua", count: 5 },
-							{ id: "new", icon: MessageSquare, label: "Baru", count: 0 },
+							{ id: "all", icon: Eye, label: "Semua", count: 0 },
+							{ id: "new", icon: MessageSquare, label: "Baru", count: 1 },
 							{ id: "investigation", icon: Heart, label: "Siasatan", count: 0 },
 							{
 								id: "checking",
@@ -83,7 +83,7 @@ function RouteComponent() {
 								label: "Sedang Disemak",
 								count: 0,
 							},
-							{ id: "completed", icon: Archive, label: "Selesai", count: 0 },
+							{ id: "completed", icon: Archive, label: "Selesai", count: 1 },
 							{ id: "closed", icon: Archive, label: "Ditutup", count: 0 },
 						].map((stat) => (
 							<Card key={stat.id} className="p-4">
@@ -137,14 +137,13 @@ function RouteComponent() {
 								</Avatar>
 								<div className="text-center">
 									<h3 className="text-xl font-semibold">Nur Hamizah</h3>
-									<div className="w-2 h-2 bg-green-500 rounded-full mx-auto mt-2" />
 								</div>
 								<div className="w-full pt-4 border-t">
 									<h4 className="text-sm font-medium text-gray-500">
-										Recent Activities:
+										Pemberitahuan:
 									</h4>
 									<p className="text-sm mt-2">
-										You have submitted a new case ETAGS-6
+										ETAGS-6324 - Selesai Notis Pendengaran
 									</p>
 								</div>
 							</div>
