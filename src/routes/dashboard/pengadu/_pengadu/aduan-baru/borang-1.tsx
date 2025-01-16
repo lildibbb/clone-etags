@@ -1,6 +1,14 @@
 import { ComplainantForm } from "@/components/form/butiranA-form";
 import { ComplaintDetailsForm } from "@/components/form/butiranB-form";
 import { PaymentForm } from "@/components/form/payment-form";
+import {
+	Breadcrumb,
+	BreadcrumbItem,
+	BreadcrumbLink,
+	BreadcrumbList,
+	BreadcrumbPage,
+	BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
 import {
 	Card,
@@ -10,8 +18,10 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import { Separator } from "@/components/ui/separator";
+import { SidebarInset, SidebarTrigger } from "@/components/ui/sidebar";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
 
@@ -53,8 +63,31 @@ function RouteComponent() {
 	};
 
 	return (
-		<div className="flex flex-col h-screen">
-			<main className="flex-1 p-4 sm:p-6 lg:p-8 overflow-auto">
+		<SidebarInset className="bg-gray-100">
+			{/* Header with Breadcrumb */}
+			<header className="flex h-16 shrink-0 items-center gap-2 border-b bg-background">
+				<div className="flex items-center gap-2 px-4">
+					<SidebarTrigger className="-ml-1" />
+					<Separator orientation="vertical" className="mr-2 h-4" />
+					<Breadcrumb>
+						<BreadcrumbList>
+							<BreadcrumbItem>
+								<BreadcrumbLink href="/dashboard/pengadu">
+									Dashboard Pengadu
+								</BreadcrumbLink>
+							</BreadcrumbItem>
+							<BreadcrumbSeparator />
+
+							<BreadcrumbItem>
+								<BreadcrumbPage>Aduan Baru - Borang 1</BreadcrumbPage>
+							</BreadcrumbItem>
+						</BreadcrumbList>
+					</Breadcrumb>
+				</div>
+			</header>
+
+			{/* Main Content */}
+			<div className="flex-1 p-4 sm:p-6 lg:p-8">
 				<Card className="border-none shadow-lg">
 					<CardHeader className="text-center border-b bg-card">
 						<CardTitle className="text-2xl font-semibold text-primary">
@@ -124,7 +157,7 @@ function RouteComponent() {
 						</Tabs>
 					</CardContent>
 				</Card>
-			</main>
-		</div>
+			</div>
+		</SidebarInset>
 	);
 }
