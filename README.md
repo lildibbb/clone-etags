@@ -1,50 +1,70 @@
-# React + TypeScript + Vite
+# Clone-eTags
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+Clone-eTags is a replica of the eTags system, which is designed to report cases of sexual harassment within government organizations. This project is developed as part of the ITT420 Network & System Administration course.
 
-Currently, two official plugins are available:
+## Tech Stack
+- **Frontend Framework:** React (with Vite)
+- **UI Components:** shadcn
+- **Routing:** TanStack Router
+- **Styling:** Tailwind CSS
+- **Package Manager:** Bun
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Installation
+To set up the project locally, follow these steps:
 
-## Expanding the ESLint configuration
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/your-username/clone-etags.git
+   cd clone-etags
+   ```
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+2. **Install dependencies:**
+   ```sh
+   bun install
+   ```
 
-- Configure the top-level `parserOptions` property like this:
+3. **Start the development server:**
+   ```sh
+   bun run dev
+   ```
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+4. **Open the app:**
+   Navigate to `http://localhost:5173` in your browser.
+
+## Features
+- Report submission for sexual harassment cases.
+- Secure user authentication (if implemented).
+- Admin panel for reviewing reports.
+- Responsive UI with modern design.
+
+## Project Structure
+```
+clone-etags/
+│── src/
+│   ├── components/    # Reusable UI components
+│   ├── pages/         # Application pages
+│   ├── routes/        # Routing setup with TanStack Router
+│   ├── styles/        # Tailwind CSS configurations
+│   ├── main.tsx       # Entry point
+│── public/            # Static assets
+│── bun.lockb          # Bun package lock file
+│── vite.config.ts     # Vite configuration
+│── tsconfig.json      # TypeScript configuration
+│── package.json       # Project metadata
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Contribution
+If you'd like to contribute:
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-name`).
+3. Make your changes and commit (`git commit -m 'Add new feature'`).
+4. Push to the branch (`git push origin feature-name`).
+5. Open a Pull Request.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## License
+This project is for educational purposes only.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+---
+Developed for ITT420 - Network & System Administration.
+
